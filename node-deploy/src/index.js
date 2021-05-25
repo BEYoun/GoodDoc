@@ -80,7 +80,7 @@ const rootDir = rel("../");
   const filename = `${deploymentDirName}-deployment-${getFullDate()}.zip`;
   const zipPath = `/tmp/${filename}`;
   await exec(
-    `zip -r ${zipPath} . -x terraform/\\* -x node_modules/\\* -x \\*/node_modules/\\* -x \\*/.cache/\\* -x .git/\\* -x \\*.DS_Store`,
+    `7z a -tzip ${zipPath} . -xr!terraform/* -xr!node_modules/* -xr!*/node_modules/* -xr!*/.cache/* -xr!.git/* -xr!*.DS_Store`,
     { cwd: rootDir, maxBuffer: MAX_BUFFER_SIZE }
   );
 
