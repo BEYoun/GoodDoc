@@ -1,0 +1,1 @@
+This stops node-deploy from running concurrently with itself. Remove this if node-deploy complains.

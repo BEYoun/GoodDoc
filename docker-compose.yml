@@ -7,6 +7,9 @@ services:
     depends_on:
       - chat-service
       - users-service
+    environment:
+      - PORT=7000
+      - USERS_SERVICE_URI=http://users-service:8101
     ports:
       - "8000:7000"
     volumes:

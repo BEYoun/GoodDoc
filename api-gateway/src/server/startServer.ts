@@ -1,5 +1,4 @@
 import { ApolloServer } from "apollo-server-express";
-import config from "config";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
@@ -9,8 +8,9 @@ import schema from "#root/graphql/schema";
 
 import formatGraphQLErrors from "./formatGraphQLErrors";
 import injectSession from "./middleware/injectSession";
+import accessEnv from "#root/helpers/accessEnv";
 
-const PORT = <number>config.get("PORT");
+const PORT = parseInt(accessEnv("PORT"));
 
 const startServer = () => {
   const apolloServer = new ApolloServer({

@@ -1,7 +1,7 @@
-import config from "config";
+import accessEnv from "#root/helpers/accessEnv";
 import got from "got";
 
-const USERS_SERVICE_URI = <string>config.get("USERS_SERVICE_URI");
+const USERS_SERVICE_URI = accessEnv("USERS_SERVICE_URI");
 
 export interface User {
   createdAt: string;
