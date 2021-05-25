@@ -34,7 +34,8 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
-    command: bash -c "echo "ServerName localhost" >> /etc/apache2/apache2.conf"
+    command: bash -c "echo 'ServerName localhost' >> /etc/apache2/apache2.conf"
+    command: bash -c "/usr/sbin/apache2ctl -D FOREGROUND"
     ports:
       - "8300:80"
     volumes:
