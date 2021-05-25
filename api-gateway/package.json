@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "watch": "ts-node-dev --poll --respawn index.dev.ts"
+    "watch": "ts-node-dev --poll --respawn index.dev.ts",
+    "build": "tsc -b"
   },
   "devDependencies": {
     "@types/config": "~0.0.38",

@@ -4,9 +4,12 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
     "module": "commonjs",
     "paths": {
-      "#root/*": ["./src/*"]
+      "#root/*": [
+        "./src/*"
+      ]
     },
     "skipLibCheck": true,
     "strict": true,
