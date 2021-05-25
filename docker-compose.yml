@@ -33,6 +33,8 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    restart: always
+    command: bash -c "echo "ServerName localhost" >> /etc/apache2/apache2.conf"
     ports:
       - "8300:80"
     volumes:
