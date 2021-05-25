@@ -1,0 +1,8 @@
+query Me {
+  userSession(me: true) {
+    user {
+      username
+      role
+    }
+  }
+}

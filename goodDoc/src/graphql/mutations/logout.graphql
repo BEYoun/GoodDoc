@@ -1,0 +1,1 @@
+mutation Logout {deleteUserSession(me: true)}

@@ -1,0 +1,10 @@
+mutation CreateUserSession($username: String!, $password: String!) {
+  createUserSession(username: $username, password: $password) {
+    user {
+      username
+      role
+    }
+    expiresAt
+    createdAt
+  }
+}
