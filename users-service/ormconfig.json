@@ -7,5 +7,5 @@
   "migrations": ["src/db/migrations/*.ts"],
   "synchronize": true,
   "type": "mysql",
-  "url": "mysql://root:password@users-service-db/db"
+  "url": "mysql://user:m1croservices@users-service-db.cq1nkwpnyge1.eu-west-3.rds.amazonaws.com:3306/db?charset=UTF8"
 }

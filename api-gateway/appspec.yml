@@ -25,4 +25,4 @@ hooks:
   ApplicationStart:
     - location: api-gateway/aws/codedeploy/ApplicationStart.sh
       timeout: 300
-      runas: ec2-user
+      runas: root

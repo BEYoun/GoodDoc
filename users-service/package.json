@@ -6,6 +6,8 @@
     "db:migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "db:migrate:undo": "ts-node ./node_modules/typeorm/cli.js migration:revert",
     "watch": "ts-node-dev --poll --respawn index.dev.ts",
+    "deploy": "node-deploy %cd%",
+    "linkall": "yarn link node-deploy",
     "build": "tsc -b"
   },
   "devDependencies": {
@@ -16,6 +18,7 @@
     "@types/lodash.omit": "~4.5.6",
     "@types/node": "~14.14.20",
     "@types/uuid": "~8.3.0",
+    "node-deploy": "../node-deploy",
     "module-alias": "~2.2.2",
     "ts-node": "~9.1.1",
     "ts-node-dev": "~1.1.1",
@@ -26,6 +29,7 @@
     "config": "~3.3.3",
     "cors": "~2.8.5",
     "dayjs": "~1.10.3",
+    "dotenv": "^10.0.0",
     "express": "~4.17.1",
     "lodash.omit": "~4.5.0",
     "mysql2": "~2.2.5",

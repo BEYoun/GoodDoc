@@ -9,8 +9,9 @@ import UserSession from "#root/db/entities/UserSession";
 import generateUUID from "#root/helpers/generateUUID";
 import hashPassword from "#root/helpers/hashPassword";
 import passwordCompareSync from "#root/helpers/passwordCompareSync";
+import accessEnv from "#root/helpers/accessEnv";
 
-const USER_SESSION_EXPIRY_HOURS = <number>config.get("USER_SESSION_EXPIRY_HOURS");
+const USER_SESSION_EXPIRY_HOURS = parseInt(accessEnv("USER_SESSION_EXPIRY_HOURS"));
 
 const setupRoutes = (app: Express) => {
   const connection = getConnection();

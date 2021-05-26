@@ -21,6 +21,8 @@ services:
       dockerfile: "./chat-service/Dockerfile"
     depends_on:
       - chat-service-db
+    environment:
+      - PORT=8100
     ports:
       - "8100:8100"
     volumes:
@@ -49,6 +51,10 @@ services:
     build:
       context: "."
       dockerfile: "./users-service/Dockerfile"
+    environment:
+      - PORT=8101
+      - USERS_SERVICE_DB_URL=mysql://root:password@users-service-db/db
+      - USER_SESSION_EXPIRY_HOURS=1
     depends_on:
       - users-service-db
     ports:

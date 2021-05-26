@@ -1,1 +1,2 @@
-console.log("chat service says hi");
+import startServer from "#root/server/startServer";
+startServer();
