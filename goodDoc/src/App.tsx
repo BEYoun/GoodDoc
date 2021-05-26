@@ -9,6 +9,7 @@ import client from './api/graphqlClient'
 import Home from './pages/home'
 import Application from './pages/application'
 import { Login } from './pages/login'
+import { Register } from './pages/register'
 
 export const App = () => {
   return (
@@ -23,6 +24,9 @@ export const App = () => {
             </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
             </Route>
             <Route exact path="/">
               <Home />

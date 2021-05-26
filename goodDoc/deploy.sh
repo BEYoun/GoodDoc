@@ -1,0 +1,1 @@
+aws s3 sync dist s3://younes-microservice-goodoc-app --delete --profile microservices-goodoc

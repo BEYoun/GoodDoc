@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     new ReactRefreshWebpackPlugin(),
     new webpack.DefinePlugin({
-      'process.env.SERVICES_URI': JSON.stringify('http://52.47.91.174'),
+      'process.env.SERVICES_URI': JSON.stringify('http://localhost:8000'),
     }),
   ],
 }
