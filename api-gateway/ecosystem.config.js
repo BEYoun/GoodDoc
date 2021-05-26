@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "api-gateway",
-      script: "dist/index.js",
+      script: "dist/index.dev.js",
       env: {
         PORT: 80,
         NODE_ENV: "production"
