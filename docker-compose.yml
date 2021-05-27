@@ -10,6 +10,7 @@ services:
     environment:
       - PORT=7000
       - USERS_SERVICE_URI=http://users-service:8101
+      - CABINETS_SERVICE_URI=http://cabinets-service:8102
     ports:
       - "8000:7000"
     volumes:
@@ -35,6 +36,28 @@ services:
     image: mysql:5.7.20
     ports:
       - "8200:3306"
+
+  cabinets-service:
+    build:
+      context: "."
+      dockerfile: "./cabinets-service/Dockerfile"
+    depends_on:
+      - cabinets-service-db
+    environment:
+      - PORT=8100
+      - CABINETS_SERVICE_DB_URL=mysql://root:password@cabinets-service-db/db
+    ports:
+      - "8102:8100"
+    volumes:
+      - ./cabinets-service:/opt/app
+
+  cabinets-service-db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db
+    image: mysql:5.7.20
+    ports:
+      - "8202:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

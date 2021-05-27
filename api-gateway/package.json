@@ -30,6 +30,6 @@
     "graphql": "~15.5.0"
   },
   "_moduleAliases": {
-    "#root": "./dist/src"
+    "#root": "./src"
   }
 }

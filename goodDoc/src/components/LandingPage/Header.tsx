@@ -121,9 +121,12 @@ const Header: React.FC = ({ children }) => {
                     <div className="mt-6 px-5">
                       <p className="text-center text-base font-medium text-gray-500">
                         Existing customer?{' '}
-                        <a href="#f" className="text-gray-900 hover:underline">
+                        <Link
+                          to="/login"
+                          className="text-gray-900 hover:underline"
+                        >
                           Login
-                        </a>
+                        </Link>
                       </p>
                     </div>
                   </div>
