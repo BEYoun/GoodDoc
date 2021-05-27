@@ -1,0 +1,8 @@
+query getAllCabinet {
+  allCabinet {
+    id
+    name
+    address
+    phone
+  }
+}

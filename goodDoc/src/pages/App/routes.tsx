@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router'
-import LogoutButton from '../../components/common/Button/LogoutButton'
 import HeaderApp from '../../components/common/Header/App/HeaderApp'
 import DefaultLayout from '../../components/layout/DefaultLayout'
 import { ISession } from '../../store/ducks/session'
+import Cabinets from './Cabinet/Cabinets'
 
 const Routes: React.FC = () => {
   const history = useHistory()
@@ -18,12 +18,13 @@ const Routes: React.FC = () => {
     <DefaultLayout>
       <HeaderApp>
         <Switch>
-          <Route exact path="/application/doctor">
-            <div>admin</div>
-          </Route>
-          <Route exact path="/application/admin">
-            <div>dd</div>
-            <LogoutButton />
+          <Route exact path="/application/doctor"></Route>
+          <Route path="/application/admin">
+            <Switch>
+              <Route exact path="/application/admin/clients">
+                <Cabinets />
+              </Route>
+            </Switch>
           </Route>
           <Route path="/application/assistant">
             <div>dd</div>

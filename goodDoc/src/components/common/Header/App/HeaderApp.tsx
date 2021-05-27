@@ -12,18 +12,19 @@ import {
   XIcon,
 } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
+import { useHistory } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLogoutMutation } from '../../../../graphql/generated/graphql'
+import { clearSession, ISession } from '../../../../store/ducks/session'
+import { Link } from 'react-router-dom'
 
-const navigation = [
+let navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: false },
   { name: 'All Files', href: '#', icon: ViewGridIconOutline, current: false },
   { name: 'Photos', href: '#', icon: PhotographIcon, current: true },
   { name: 'Shared', href: '#', icon: UserGroupIcon, current: false },
   { name: 'Albums', href: '#', icon: CollectionIcon, current: false },
   { name: 'Settings', href: '#', icon: CogIcon, current: false },
-]
-const userNavigation = [
-  { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#' },
 ]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,6 +34,23 @@ function classNames(...classes: any) {
 
 const HeaderApp: React.FC = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const [logout] = useLogoutMutation()
+  const role = useSelector(
+    (state: { session: ISession }) => state.session?.role
+  )
+  if (role == 'admin') {
+    navigation = [
+      { name: 'Home', href: '', icon: HomeIcon, current: false },
+      {
+        name: 'Clients',
+        href: 'clients',
+        icon: UserGroupIcon,
+        current: false,
+      },
+    ]
+  }
   return (
     <>
       {/* Narrow sidebar */}
@@ -47,9 +65,9 @@ const HeaderApp: React.FC = ({ children }) => {
           </div>
           <div className="flex-1 mt-6 w-full px-2 space-y-1">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={'/application/' + role + '/' + item.href}
                 className={classNames(
                   item.current
                     ? 'bg-blue-800 text-white'
@@ -68,7 +86,7 @@ const HeaderApp: React.FC = ({ children }) => {
                   aria-hidden="true"
                 />
                 <span className="mt-2">{item.name}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -135,9 +153,9 @@ const HeaderApp: React.FC = ({ children }) => {
                 <nav className="h-full flex flex-col">
                   <div className="space-y-1">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={'/application/' + role + '/' + item.href}
                         className={classNames(
                           item.current
                             ? 'bg-blue-800 text-white'
@@ -156,7 +174,7 @@ const HeaderApp: React.FC = ({ children }) => {
                           aria-hidden="true"
                         />
                         <span>{item.name}</span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </nav>
@@ -239,21 +257,18 @@ const HeaderApp: React.FC = ({ children }) => {
                           static
                           className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                         >
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
+                          <Menu.Item>
+                            <button
+                              className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700 w-full"
+                              onClick={async () => {
+                                logout()
+                                dispatch(clearSession())
+                                history.push('/')
+                              }}
+                            >
+                              Logout
+                            </button>
+                          </Menu.Item>
                         </Menu.Items>
                       </Transition>
                     </>

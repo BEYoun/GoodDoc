@@ -18,6 +18,14 @@ export type Scalars = {
 };
 
 
+export type Cabinet = {
+  __typename?: 'Cabinet';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  address: Scalars['String'];
+  phone: Scalars['String'];
+};
+
 export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
@@ -29,6 +37,7 @@ export type Mutation = {
   createUser: User;
   createUserSession: UserSession;
   deleteUserSession: Scalars['Boolean'];
+  createCabinet: Cabinet;
 };
 
 
@@ -48,9 +57,17 @@ export type MutationDeleteUserSessionArgs = {
   me: Scalars['Boolean'];
 };
 
+
+export type MutationCreateCabinetArgs = {
+  name: Scalars['String'];
+  address: Scalars['String'];
+  phone: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   userSession?: Maybe<UserSession>;
+  allCabinet?: Maybe<Array<Maybe<Cabinet>>>;
 };
 
 
@@ -71,6 +88,21 @@ export type UserSession = {
   expiresAt: Scalars['Date'];
   user: User;
 };
+
+export type CreateCabinetMutationVariables = Exact<{
+  name: Scalars['String'];
+  address: Scalars['String'];
+  phone: Scalars['String'];
+}>;
+
+
+export type CreateCabinetMutation = (
+  { __typename?: 'Mutation' }
+  & { createCabinet: (
+    { __typename?: 'Cabinet' }
+    & Pick<Cabinet, 'id' | 'name' | 'address' | 'phone'>
+  ) }
+);
 
 export type CreateUserSessionMutationVariables = Exact<{
   username: Scalars['String'];
@@ -112,6 +144,17 @@ export type RegisterMutation = (
   ) }
 );
 
+export type GetAllCabinetQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllCabinetQuery = (
+  { __typename?: 'Query' }
+  & { allCabinet?: Maybe<Array<Maybe<(
+    { __typename?: 'Cabinet' }
+    & Pick<Cabinet, 'id' | 'name' | 'address' | 'phone'>
+  )>>> }
+);
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -127,6 +170,44 @@ export type MeQuery = (
 );
 
 
+export const CreateCabinetDocument = gql`
+    mutation CreateCabinet($name: String!, $address: String!, $phone: String!) {
+  createCabinet(name: $name, address: $address, phone: $phone) {
+    id
+    name
+    address
+    phone
+  }
+}
+    `;
+export type CreateCabinetMutationFn = Apollo.MutationFunction<CreateCabinetMutation, CreateCabinetMutationVariables>;
+
+/**
+ * __useCreateCabinetMutation__
+ *
+ * To run a mutation, you first call `useCreateCabinetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateCabinetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createCabinetMutation, { data, loading, error }] = useCreateCabinetMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      address: // value for 'address'
+ *      phone: // value for 'phone'
+ *   },
+ * });
+ */
+export function useCreateCabinetMutation(baseOptions?: Apollo.MutationHookOptions<CreateCabinetMutation, CreateCabinetMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateCabinetMutation, CreateCabinetMutationVariables>(CreateCabinetDocument, options);
+      }
+export type CreateCabinetMutationHookResult = ReturnType<typeof useCreateCabinetMutation>;
+export type CreateCabinetMutationResult = Apollo.MutationResult<CreateCabinetMutation>;
+export type CreateCabinetMutationOptions = Apollo.BaseMutationOptions<CreateCabinetMutation, CreateCabinetMutationVariables>;
 export const CreateUserSessionDocument = gql`
     mutation CreateUserSession($username: String!, $password: String!) {
   createUserSession(username: $username, password: $password) {
@@ -231,6 +312,43 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const GetAllCabinetDocument = gql`
+    query getAllCabinet {
+  allCabinet {
+    id
+    name
+    address
+    phone
+  }
+}
+    `;
+
+/**
+ * __useGetAllCabinetQuery__
+ *
+ * To run a query within a React component, call `useGetAllCabinetQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllCabinetQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllCabinetQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllCabinetQuery(baseOptions?: Apollo.QueryHookOptions<GetAllCabinetQuery, GetAllCabinetQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllCabinetQuery, GetAllCabinetQueryVariables>(GetAllCabinetDocument, options);
+      }
+export function useGetAllCabinetLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllCabinetQuery, GetAllCabinetQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllCabinetQuery, GetAllCabinetQueryVariables>(GetAllCabinetDocument, options);
+        }
+export type GetAllCabinetQueryHookResult = ReturnType<typeof useGetAllCabinetQuery>;
+export type GetAllCabinetLazyQueryHookResult = ReturnType<typeof useGetAllCabinetLazyQuery>;
+export type GetAllCabinetQueryResult = Apollo.QueryResult<GetAllCabinetQuery, GetAllCabinetQueryVariables>;
 export const MeDocument = gql`
     query Me {
   userSession(me: true) {
