@@ -27,7 +27,7 @@ const startServer = () => {
   });
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.info(`Users service listdening on ${PORT}`);
+    console.info(`Users servssice listening on ${PORT}`);
   });
 };
 

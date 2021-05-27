@@ -13,18 +13,28 @@ export class Users1610105419073 implements MigrationInterface {
           },
           {
             length: "25",
-            name: "username",
+            name: "name",
             type: "varchar",
           },
           {
-            length: "10",
-            name: "role",
+            length: "20",
+            name: "phone",
             type: "varchar",
           },
           {
-            length: "60",
-            name: "passwordHash",
-            type: "char",
+            length: "25",
+            name: "address",
+            type: "varchar",
+          },
+          {
+            name: "numberDoc",
+            type: "int",
+            default: 1,
+          },
+          {
+            name: "numberAss",
+            type: "int",
+            default: 1,
           },
           {
             default: "now()",
@@ -32,21 +42,21 @@ export class Users1610105419073 implements MigrationInterface {
             type: "timestamp",
           },
         ],
-        name: "users",
+        name: "cabinets",
       })
     );
 
     await queryRunner.createIndex(
-      "users",
+      "cabinets",
       new TableIndex({
-        columnNames: ["username"],
+        columnNames: ["name"],
         isUnique: true,
-        name: "unique_username",
+        name: "unique_name",
       })
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("cabinets");
   }
 }

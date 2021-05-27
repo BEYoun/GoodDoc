@@ -4,7 +4,9 @@
   "license": "MIT",
   "main": "index.dev.ts",
   "scripts": {
-    "watch": "nodemon --exec ts-node index.dev.ts",
+    "db:migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "db:migrate:undo": "ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "watch": "ts-node-dev --poll --respawn index.dev.ts",
     "deploy": "node-deploy %cd%",
     "linkall": "yarn link node-deploy",
     "build": "tsc -b"
@@ -15,8 +17,7 @@
     "@types/node": "^15.6.1",
     "module-alias": "~2.2.2",
     "node-deploy": "../node-deploy",
-    "nodemon": "^2.0.7",
-    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.2"
   },
   "dependencies": {

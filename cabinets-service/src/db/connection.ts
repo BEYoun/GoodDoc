@@ -1,16 +1,15 @@
 import accessEnv from "#root/helpers/accessEnv";
 import { Connection, createConnection } from "typeorm";
 
-import User from "./entities/User";
-import UserSession from "./entities/UserSession";
+import Cabinet from "./entities/Cabinet";
 
 let connection: Connection;
 
 export const initConnection = async () => {
   connection = await createConnection({
-    entities: [User, UserSession],
+    entities: [Cabinet],
     type: "mysql",
-    url: accessEnv("USERS_SERVICE_DB_URL"),
+    url: accessEnv("CABINETS_SERVICE_DB_URL"),
   });
 };
 
