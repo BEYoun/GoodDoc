@@ -1,5 +1,5 @@
 mutation Register($username: String!, $password: String!) {
-  createUser(password: $password, username: $username) {
+  createUser(password: $password, username: $username, role: "admin") {
     username
     role
   }

@@ -4,9 +4,10 @@ import ApplicationDefaultLayout from '../../../components/layout/ApplicationDefa
 import PageHeader from '../../../components/common/PageHeader'
 import CreateCabinet from './actions/createCabinet'
 import { useGetAllCabinetQuery } from '../../../graphql/generated/graphql'
+import { Link } from 'react-router-dom'
 
 const Cabinet: React.FC = () => {
-  const { data } = useGetAllCabinetQuery()
+  const { data } = useGetAllCabinetQuery({ fetchPolicy: 'network-only' })
   return (
     <ApplicationDefaultLayout>
       {/* Page header */}
@@ -29,8 +30,8 @@ const Cabinet: React.FC = () => {
             <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
               {data?.allCabinet?.map((transaction) => (
                 <li key={transaction?.id}>
-                  <a
-                    href={'#d'}
+                  <Link
+                    to={'/application/admin/client/' + transaction?.id}
                     className="block px-4 py-4 bg-white hover:bg-gray-50"
                   >
                     <span className="flex items-center space-x-4">
@@ -54,7 +55,7 @@ const Cabinet: React.FC = () => {
                         aria-hidden="true"
                       />
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -98,8 +99,10 @@ const Cabinet: React.FC = () => {
                         <tr key={transaction?.id} className="bg-white">
                           <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             <div className="flex">
-                              <a
-                                href={'#s'}
+                              <Link
+                                to={
+                                  '/application/admin/client/' + transaction?.id
+                                }
                                 className="group inline-flex space-x-2 truncate text-sm"
                               >
                                 <CashIcon
@@ -109,7 +112,7 @@ const Cabinet: React.FC = () => {
                                 <p className="text-gray-500 truncate group-hover:text-gray-900">
                                   {transaction?.name}
                                 </p>
-                              </a>
+                              </Link>
                             </div>
                           </td>
                           <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">

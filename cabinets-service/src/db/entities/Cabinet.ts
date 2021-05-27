@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import Profile from "./Profile";
 
 @Entity("cabinets")
 export default class Cabinet {
@@ -19,6 +20,9 @@ export default class Cabinet {
   
   @Column({ default: 1 })
   numberAss: number
+
+  @OneToMany(() => Profile, profile => profile.cabinet)
+  profiles!: Profile[];
 
   @CreateDateColumn()
   createdAt: string;

@@ -44,10 +44,10 @@ services:
     depends_on:
       - cabinets-service-db
     environment:
-      - PORT=8100
+      - PORT=8102
       - CABINETS_SERVICE_DB_URL=mysql://root:password@cabinets-service-db/db
     ports:
-      - "8102:8100"
+      - "8102:8102"
     volumes:
       - ./cabinets-service:/opt/app
 

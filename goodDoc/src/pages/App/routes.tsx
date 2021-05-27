@@ -5,6 +5,7 @@ import HeaderApp from '../../components/common/Header/App/HeaderApp'
 import DefaultLayout from '../../components/layout/DefaultLayout'
 import { ISession } from '../../store/ducks/session'
 import Cabinets from './Cabinet/Cabinets'
+import ProfileCabinet from './Cabinet/ProfileCabinet'
 
 const Routes: React.FC = () => {
   const history = useHistory()
@@ -23,6 +24,9 @@ const Routes: React.FC = () => {
             <Switch>
               <Route exact path="/application/admin/clients">
                 <Cabinets />
+              </Route>
+              <Route path="/application/admin/client/:id">
+                <ProfileCabinet />
               </Route>
             </Switch>
           </Route>

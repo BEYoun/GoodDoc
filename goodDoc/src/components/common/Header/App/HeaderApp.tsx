@@ -1,14 +1,10 @@
 import React, { useState, Fragment } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
-  CogIcon,
-  CollectionIcon,
   HomeIcon,
   MenuAlt2Icon,
-  PhotographIcon,
   PlusIcon as PlusIconOutline,
   UserGroupIcon,
-  ViewGridIcon as ViewGridIconOutline,
   XIcon,
 } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
@@ -17,15 +13,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLogoutMutation } from '../../../../graphql/generated/graphql'
 import { clearSession, ISession } from '../../../../store/ducks/session'
 import { Link } from 'react-router-dom'
-
-let navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: false },
-  { name: 'All Files', href: '#', icon: ViewGridIconOutline, current: false },
-  { name: 'Photos', href: '#', icon: PhotographIcon, current: true },
-  { name: 'Shared', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Albums', href: '#', icon: CollectionIcon, current: false },
-  { name: 'Settings', href: '#', icon: CogIcon, current: false },
-]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function classNames(...classes: any) {
@@ -37,10 +24,17 @@ const HeaderApp: React.FC = ({ children }) => {
   const history = useHistory()
   const dispatch = useDispatch()
   const [logout] = useLogoutMutation()
+  let navigation: {
+    name: string
+    href: string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    icon: any
+    current: boolean
+  }[] = []
   const role = useSelector(
     (state: { session: ISession }) => state.session?.role
   )
-  if (role == 'admin') {
+  if (role === 'admin') {
     navigation = [
       { name: 'Home', href: '', icon: HomeIcon, current: false },
       {
@@ -50,6 +44,20 @@ const HeaderApp: React.FC = ({ children }) => {
         current: false,
       },
     ]
+  }
+  if (role === 'doctor') {
+    navigation = [
+      { name: 'Home', href: '', icon: HomeIcon, current: false },
+      {
+        name: 'Patients',
+        href: 'patients',
+        icon: UserGroupIcon,
+        current: false,
+      },
+    ]
+  }
+  if (role === 'assistant') {
+    navigation = [{ name: 'Home', href: '', icon: HomeIcon, current: false }]
   }
   return (
     <>

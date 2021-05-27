@@ -93,7 +93,7 @@ const setupRoutes = (app: Express) => {
         id: generateUUID(),
         passwordHash: hashPassword(req.body.password),
         username: req.body.username,
-        role: "admin"
+        role: req.body.role
       };
 
       await connection.createQueryBuilder().insert().into(User).values([newUser]).execute();

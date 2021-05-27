@@ -1,0 +1,15 @@
+mutation CreateDoctor(
+  $password: String!
+  $username: String!
+  $cabinetId: String!
+) {
+  createUserClient(
+    password: $password
+    username: $username
+    role: "doctor"
+    cabinetId: $cabinetId
+  ) {
+    id
+    username
+  }
+}

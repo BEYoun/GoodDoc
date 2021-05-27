@@ -1,0 +1,15 @@
+mutation CreateAssistant(
+  $password: String!
+  $username: String!
+  $cabinetId: String!
+) {
+  createUserClient(
+    password: $password
+    username: $username
+    role: "assistant"
+    cabinetId: $cabinetId
+  ) {
+    id
+    username
+  }
+}
