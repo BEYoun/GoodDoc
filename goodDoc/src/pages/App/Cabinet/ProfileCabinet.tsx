@@ -1,20 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ApplicationDefaultLayout from '../../../components/layout/ApplicationDefaultLayout'
 import { Route, Switch as SwitchRouter, useParams } from 'react-router'
 import { useGetCabinetByIdQuery } from '../../../graphql/generated/graphql'
 import { Link } from 'react-router-dom'
-import {
-  BellIcon,
-  CashIcon,
-  ChevronLeftIcon,
-  CogIcon,
-  KeyIcon,
-  PhotographIcon,
-  SearchCircleIcon,
-  ViewGridAddIcon,
-} from '@heroicons/react/outline'
+import { ChevronDownIcon, CogIcon } from '@heroicons/react/outline'
 import { UsersIcon } from '@heroicons/react/solid'
 import UsersCabinet from '../../../components/Cabinet/UsersCabinet'
+import { Menu, Transition } from '@headlessui/react'
+import { EditActiveIcon } from '../../../components/common/svg'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function classNames(...classes: any) {
@@ -38,54 +31,6 @@ const subNavigation = [
     icon: UsersIcon,
     current: false,
   },
-  {
-    name: 'Notifications',
-    description:
-      'Enim, nullam mi vel et libero urna lectus enim. Et sed in maecenas tellus.',
-    href: '#',
-    icon: BellIcon,
-    current: false,
-  },
-  {
-    name: 'Security',
-    description:
-      'Semper accumsan massa vel volutpat massa. Non turpis ut nulla aliquet turpis.',
-    href: '#',
-    icon: KeyIcon,
-    current: false,
-  },
-  {
-    name: 'Appearance',
-    description:
-      'Magna nulla id sed ornare ipsum eget. Massa eget porttitor suscipit consequat.',
-    href: '#',
-    icon: PhotographIcon,
-    current: false,
-  },
-  {
-    name: 'Billing',
-    description:
-      'Orci aliquam arcu egestas turpis cursus. Lectus faucibus netus dui auctor mauris.',
-    href: '#',
-    icon: CashIcon,
-    current: false,
-  },
-  {
-    name: 'Integrations',
-    description:
-      'Nisi, elit volutpat odio urna quis arcu faucibus dui. Mauris adipiscing pellentesque.',
-    href: '#',
-    icon: ViewGridAddIcon,
-    current: false,
-  },
-  {
-    name: 'Additional Resources',
-    description:
-      'Quis viverra netus donec ut auctor fringilla facilisis. Nunc sit donec cursus sit quis et.',
-    href: '#',
-    icon: SearchCircleIcon,
-    current: false,
-  },
 ]
 
 const ProfileCabinet: React.FC = () => {
@@ -97,23 +42,62 @@ const ProfileCabinet: React.FC = () => {
   })
   return (
     <ApplicationDefaultLayout>
-      <div className="flex-1 flex flex-col overflow-y-auto xl:overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-y-auto xl:overflow-hidden  h-full">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           className="bg-white border-b border-blue-gray-200 xl:hidden"
         >
-          <div className="max-w-3xl mx-auto py-3 px-4 flex items-start sm:px-6 lg:px-8">
-            <a
-              href="#d"
-              className="-ml-1 inline-flex items-center space-x-3 text-sm font-medium text-blue-gray-900"
-            >
-              <ChevronLeftIcon
-                className="h-5 w-5 text-blue-gray-400"
-                aria-hidden="true"
-              />
-              <span>Parametrage du Cabinet {info?.getCabinetById?.name}</span>
-            </a>
+          <div className="max-w-3xl mx-auto py-3 px-4 flex items-center sm:px-6 lg:px-8  space-x-3 font-medium text-blue-gray-900 text-sm">
+            <span className="flex-1">
+              Parametrage du Cabinet {info?.getCabinetById?.name}
+            </span>
+            <Menu as="div" className="relative inline-block text-left">
+              <div>
+                <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-50 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                  Menu
+                  <ChevronDownIcon
+                    className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+                    aria-hidden="true"
+                  />
+                </Menu.Button>
+              </div>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="px-1 py-1 ">
+                    {subNavigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={'/application/admin/client/' + id + '/' + item.href}
+                        aria-current={item.current ? 'page' : undefined}
+                      >
+                        <Menu.Item>
+                          <button
+                            className={
+                              'text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm'
+                            }
+                          >
+                            <EditActiveIcon
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                            {item.name}
+                          </button>
+                        </Menu.Item>
+                      </Link>
+                    ))}
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
           </div>
         </nav>
 

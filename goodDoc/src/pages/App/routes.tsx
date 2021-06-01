@@ -5,6 +5,7 @@ import HeaderApp from '../../components/common/Header/App/HeaderApp'
 import DefaultLayout from '../../components/layout/DefaultLayout'
 import { ISession } from '../../store/ducks/session'
 import Cabinets from './Cabinet/Cabinets'
+import Patients from './Patient/Patients'
 import ProfileCabinet from './Cabinet/ProfileCabinet'
 
 const Routes: React.FC = () => {
@@ -19,7 +20,13 @@ const Routes: React.FC = () => {
     <DefaultLayout>
       <HeaderApp>
         <Switch>
-          <Route exact path="/application/doctor"></Route>
+          <Route path="/application/doctor">
+            <Switch>
+              <Route exact path="/application/doctor/patients">
+                <Patients />
+              </Route>
+            </Switch>
+          </Route>
           <Route path="/application/admin">
             <Switch>
               <Route exact path="/application/admin/clients">
