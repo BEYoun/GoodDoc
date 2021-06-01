@@ -26,3 +26,11 @@ variable "users-service-db-password" {
 variable "users-service-db-username" {
   type = string
 }
+
+variable "cabinets-service-db-password" {
+  type = string
+}
+
+variable "cabinets-service-db-username" {
+  type = string
+}

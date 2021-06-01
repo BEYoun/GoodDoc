@@ -27,6 +27,10 @@ output "chat-service-private-ip" {
 }
 
 
+output "chat-service-db-address" {
+  value = module.chat-service-db.address
+}
+
 output "users-service-codedeploy-app-name" {
   value = module.users-service-codedeploy.app-name
 }
@@ -39,16 +43,33 @@ output "users-service-private-ip" {
   value = module.users-service.private-ip
 }
 
-output "aws-region" {
-  value = var.aws-region
-}
-
 
 output "users-service-db-address" {
   value = module.users-service-db.address
 }
 
-output "chat-service-db-address" {
-  value = module.chat-service-db.address
+output "cabinets-service-codedeploy-app-name" {
+  value = module.cabinets-service-codedeploy.app-name
 }
+
+output "cabinets-service-deployment-bucket-name" {
+  value = module.cabinets-service-codedeploy.deployment-bucket-name
+}
+
+output "cabinets-service-private-ip" {
+  value = module.cabinets-service.private-ip
+}
+
+
+output "cabinets-service-db-address" {
+  value = module.cabinets-service-db.address
+}
+
+
+output "aws-region" {
+  value = var.aws-region
+}
+
+
+
 

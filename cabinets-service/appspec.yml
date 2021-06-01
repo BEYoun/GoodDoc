@@ -22,6 +22,9 @@ hooks:
     - location: cabinets-service/aws/codedeploy/AfterInstall/2_buildBundle.sh
       timeout: 300
       runas: ec2-user
+    - location: cabinets-service/aws/codedeploy/AfterInstall/3_runMigrations.sh
+      timeout: 300
+      runas: ec2-user
   ApplicationStart:
     - location: cabinets-service/aws/codedeploy/ApplicationStart.sh
       timeout: 300

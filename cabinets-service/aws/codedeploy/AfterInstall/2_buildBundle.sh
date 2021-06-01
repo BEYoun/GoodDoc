@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /opt/microservices-demo/chat-service
+cd /opt/microservices-demo/cabinets-service
 yarn build
