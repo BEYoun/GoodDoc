@@ -1,0 +1,25 @@
+mutation CreatePatient(
+  $cin: String!
+  $sex: String
+  $firstName: String
+  $lastName: String
+  $email: String
+  $address: String
+  $zipCode: Int
+  $assurance: String
+  $profession: String
+) {
+  createPatient(
+    cin: $cin
+    sex: $sex
+    firstName: $firstName
+    lastName: $lastName
+    email: $email
+    address: $address
+    zipCode: $zipCode
+    assurance: $assurance
+    profession: $profession
+  ) {
+    ...PatientDefault
+  }
+}

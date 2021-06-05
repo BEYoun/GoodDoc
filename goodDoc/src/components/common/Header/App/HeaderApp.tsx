@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
+  CalendarIcon,
   HomeIcon,
   MenuAlt2Icon,
   PlusIcon as PlusIconOutline,
@@ -52,6 +53,12 @@ const HeaderApp: React.FC = ({ children }) => {
         name: 'Patients',
         href: 'patients',
         icon: UserGroupIcon,
+        current: false,
+      },
+      {
+        name: 'Calendrier',
+        href: 'calendrier',
+        icon: CalendarIcon,
         current: false,
       },
     ]

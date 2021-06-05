@@ -1344,6 +1344,46 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fullcalendar/common@~5.7.0", "@fullcalendar/common@~5.7.2":
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.7.2.tgz#a9fae0159a26dd83b0b85df04df3fd66133fa433"
+  integrity sha512-0EDKmZBvTUFLvnJ7n6Vo6xMaPVm0jpYq739aSjwFPPXKgbjKFTPbWvLkaDpjJf7YhVebVSOLHbUC1Ky5wXsKvQ==
+  dependencies:
+    tslib "^2.0.3"
+
+"@fullcalendar/daygrid@^5.7.2", "@fullcalendar/daygrid@~5.7.2":
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-5.7.2.tgz#8576c65ffdcca5bc278e96c54cabbecaaabd229c"
+  integrity sha512-YHxOv3sLDwBWhb9+JBwQ/25VOJ0/22B6msRijIPbmJt5bljqYCIENQ4OLQ5UxZlkDC0Q9CSBg84oBtZYfW+kEg==
+  dependencies:
+    "@fullcalendar/common" "~5.7.2"
+    tslib "^2.0.3"
+
+"@fullcalendar/interaction@^5.7.2":
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/interaction/-/interaction-5.7.2.tgz#df06ab5fe71dff12ace85d61a1535fa24181acac"
+  integrity sha512-fnDcwE++0tie6wNVl/ZqUjgOQEekkdmbWH9hmcwE65y2aYMBX4IHE95MjMWVRAy2edahfAmy4xucQs2T0HYYSw==
+  dependencies:
+    "@fullcalendar/common" "~5.7.2"
+    tslib "^2.0.3"
+
+"@fullcalendar/react@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-5.7.0.tgz#886ff7d283abf7c5e43ddf895ae88fa15d523039"
+  integrity sha512-9JdaN/pZXlUFyUe8H1NHIvEt5UVe2p/sctcfsQbKSPJ9NNTVmK+kk3qfUpOWEho6DYuFRLqYI+VwmeVM5mE8rA==
+  dependencies:
+    "@fullcalendar/common" "~5.7.0"
+    tslib "^2.0.3"
+
+"@fullcalendar/timegrid@^5.7.2":
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/timegrid/-/timegrid-5.7.2.tgz#0c2d832070744c154f71b4c442e59910407d954e"
+  integrity sha512-FRZRwVtlahljSILexvmhLg2LnFbJVCpeuzAIgdURmRoSDCCDuxoA6Z3l66a/QFp3LcFVbZbg7VjKibyvvB9b9A==
+  dependencies:
+    "@fullcalendar/common" "~5.7.2"
+    "@fullcalendar/daygrid" "~5.7.2"
+    tslib "^2.0.3"
+
 "@fullhuman/postcss-purgecss@^3.1.3":
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-3.1.3.tgz#47af7b87c9bfb3de4bc94a38f875b928fffdf339"
@@ -7691,6 +7731,13 @@ rc@^1.2.8:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-day-picker@^7.4.10:
+  version "7.4.10"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-7.4.10.tgz#d3928fa65c04379ad28c76de22aa85374a8361e1"
+  integrity sha512-/QkK75qLKdyLmv0kcVzhL7HoJPazoZXS8a6HixbVoK6vWey1Od1WRLcxfyEiUsRfccAlIlf6oKHShqY2SM82rA==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-dom@^17.0.1:
   version "17.0.1"

@@ -1,0 +1,15 @@
+fragment PatientDefault on Patient {
+  id
+  cin
+  sex
+  firstName
+  lastName
+  email
+  address
+  zipCode
+  assurance
+  birthday
+  profession
+  country
+  numberPhone
+}

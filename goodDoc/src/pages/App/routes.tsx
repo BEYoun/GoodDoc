@@ -1,12 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router'
+
 import HeaderApp from '../../components/common/Header/App/HeaderApp'
 import DefaultLayout from '../../components/layout/DefaultLayout'
 import { ISession } from '../../store/ducks/session'
 import Cabinets from './Cabinet/Cabinets'
 import Patients from './Patient/Patients'
 import ProfileCabinet from './Cabinet/ProfileCabinet'
+import Calendrier from './Calendrier'
 
 const Routes: React.FC = () => {
   const history = useHistory()
@@ -24,6 +26,9 @@ const Routes: React.FC = () => {
             <Switch>
               <Route exact path="/application/doctor/patients">
                 <Patients />
+              </Route>
+              <Route exact path="/application/doctor/calendrier">
+                <Calendrier />
               </Route>
             </Switch>
           </Route>

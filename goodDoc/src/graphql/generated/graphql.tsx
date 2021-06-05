@@ -1,252 +1,322 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
+import { gql } from '@apollo/client'
+import * as Apollo from '@apollo/client'
+export type Maybe<T> = T | null
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> }
+const defaultOptions = {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  Date: any;
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
+  Date: any
   /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
-};
-
+  Upload: any
+}
 
 export type Cabinet = {
-  __typename?: 'Cabinet';
-  id: Scalars['ID'];
-  name: Scalars['String'];
-  address: Scalars['String'];
-  phone: Scalars['String'];
-};
+  __typename?: 'Cabinet'
+  id: Scalars['ID']
+  name: Scalars['String']
+  address: Scalars['String']
+  phone: Scalars['String']
+}
 
 export enum CacheControlScope {
   Public = 'PUBLIC',
-  Private = 'PRIVATE'
+  Private = 'PRIVATE',
 }
-
 
 export type Mutation = {
-  __typename?: 'Mutation';
-  createUser: User;
-  createUserClient: Profile;
-  createUserSession: UserSession;
-  deleteUserSession: Scalars['Boolean'];
-  createCabinet: Cabinet;
-};
-
+  __typename?: 'Mutation'
+  createUser: User
+  createUserClient: Profile
+  createUserSession: UserSession
+  deleteUserSession: Scalars['Boolean']
+  createCabinet: Cabinet
+  createPatient: Patient
+}
 
 export type MutationCreateUserArgs = {
-  password: Scalars['String'];
-  username: Scalars['String'];
-  role: Scalars['String'];
-};
-
+  password: Scalars['String']
+  username: Scalars['String']
+  role: Scalars['String']
+}
 
 export type MutationCreateUserClientArgs = {
-  password: Scalars['String'];
-  username: Scalars['String'];
-  role: Scalars['String'];
-  cabinetId: Scalars['String'];
-};
-
+  password: Scalars['String']
+  username: Scalars['String']
+  role: Scalars['String']
+  cabinetId: Scalars['String']
+}
 
 export type MutationCreateUserSessionArgs = {
-  password: Scalars['String'];
-  username: Scalars['String'];
-};
-
+  password: Scalars['String']
+  username: Scalars['String']
+}
 
 export type MutationDeleteUserSessionArgs = {
-  me: Scalars['Boolean'];
-};
-
+  me: Scalars['Boolean']
+}
 
 export type MutationCreateCabinetArgs = {
-  name: Scalars['String'];
-  address: Scalars['String'];
-  phone: Scalars['String'];
-};
+  name: Scalars['String']
+  address: Scalars['String']
+  phone: Scalars['String']
+}
+
+export type MutationCreatePatientArgs = {
+  cin: Scalars['String']
+  sex?: Maybe<Scalars['String']>
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  address?: Maybe<Scalars['String']>
+  zipCode?: Maybe<Scalars['Int']>
+  assurance?: Maybe<Scalars['String']>
+  birthday?: Maybe<Scalars['String']>
+  profession?: Maybe<Scalars['String']>
+  country?: Maybe<Scalars['String']>
+  numberPhone?: Maybe<Scalars['String']>
+}
+
+export type Patient = {
+  __typename?: 'Patient'
+  id: Scalars['ID']
+  cin: Scalars['String']
+  sex?: Maybe<Scalars['String']>
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  address?: Maybe<Scalars['String']>
+  zipCode?: Maybe<Scalars['Int']>
+  assurance?: Maybe<Scalars['String']>
+  birthday?: Maybe<Scalars['String']>
+  profession?: Maybe<Scalars['String']>
+  country?: Maybe<Scalars['String']>
+  numberPhone?: Maybe<Scalars['String']>
+}
 
 export type Profile = {
-  __typename?: 'Profile';
-  id: Scalars['ID'];
-  username: Scalars['String'];
-  cabinet: Cabinet;
-};
+  __typename?: 'Profile'
+  id: Scalars['ID']
+  username: Scalars['String']
+  cabinet: Cabinet
+}
 
 export type Query = {
-  __typename?: 'Query';
-  userSession?: Maybe<UserSession>;
-  allCabinet?: Maybe<Array<Maybe<Cabinet>>>;
-  getCabinetById?: Maybe<Cabinet>;
-};
-
+  __typename?: 'Query'
+  userSession?: Maybe<UserSession>
+  allCabinet?: Maybe<Array<Maybe<Cabinet>>>
+  getCabinetById?: Maybe<Cabinet>
+  getAllPatients?: Maybe<Array<Maybe<Patient>>>
+}
 
 export type QueryUserSessionArgs = {
-  me: Scalars['Boolean'];
-};
-
+  me: Scalars['Boolean']
+}
 
 export type QueryGetCabinetByIdArgs = {
-  cabinetId: Scalars['String'];
-};
-
+  cabinetId: Scalars['String']
+}
 
 export type User = {
-  __typename?: 'User';
-  username: Scalars['ID'];
-  role: Scalars['String'];
-};
+  __typename?: 'User'
+  username: Scalars['ID']
+  role: Scalars['String']
+}
 
 export type UserSession = {
-  __typename?: 'UserSession';
-  createdAt: Scalars['Date'];
-  expiresAt: Scalars['Date'];
-  user: User;
-};
+  __typename?: 'UserSession'
+  createdAt: Scalars['Date']
+  expiresAt: Scalars['Date']
+  user: User
+}
+
+export type PatientDefaultFragment = { __typename?: 'Patient' } & Pick<
+  Patient,
+  | 'id'
+  | 'cin'
+  | 'sex'
+  | 'firstName'
+  | 'lastName'
+  | 'email'
+  | 'address'
+  | 'zipCode'
+  | 'assurance'
+  | 'birthday'
+  | 'profession'
+  | 'country'
+  | 'numberPhone'
+>
 
 export type CreateCabinetMutationVariables = Exact<{
-  name: Scalars['String'];
-  address: Scalars['String'];
-  phone: Scalars['String'];
-}>;
+  name: Scalars['String']
+  address: Scalars['String']
+  phone: Scalars['String']
+}>
 
+export type CreateCabinetMutation = { __typename?: 'Mutation' } & {
+  createCabinet: { __typename?: 'Cabinet' } & Pick<
+    Cabinet,
+    'id' | 'name' | 'address' | 'phone'
+  >
+}
 
-export type CreateCabinetMutation = (
-  { __typename?: 'Mutation' }
-  & { createCabinet: (
-    { __typename?: 'Cabinet' }
-    & Pick<Cabinet, 'id' | 'name' | 'address' | 'phone'>
-  ) }
-);
+export type CreatePatientMutationVariables = Exact<{
+  cin: Scalars['String']
+  sex?: Maybe<Scalars['String']>
+  firstName?: Maybe<Scalars['String']>
+  lastName?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  address?: Maybe<Scalars['String']>
+  zipCode?: Maybe<Scalars['Int']>
+  assurance?: Maybe<Scalars['String']>
+  profession?: Maybe<Scalars['String']>
+}>
+
+export type CreatePatientMutation = { __typename?: 'Mutation' } & {
+  createPatient: { __typename?: 'Patient' } & PatientDefaultFragment
+}
 
 export type CreateAssistantMutationVariables = Exact<{
-  password: Scalars['String'];
-  username: Scalars['String'];
-  cabinetId: Scalars['String'];
-}>;
+  password: Scalars['String']
+  username: Scalars['String']
+  cabinetId: Scalars['String']
+}>
 
-
-export type CreateAssistantMutation = (
-  { __typename?: 'Mutation' }
-  & { createUserClient: (
-    { __typename?: 'Profile' }
-    & Pick<Profile, 'id' | 'username'>
-  ) }
-);
+export type CreateAssistantMutation = { __typename?: 'Mutation' } & {
+  createUserClient: { __typename?: 'Profile' } & Pick<
+    Profile,
+    'id' | 'username'
+  >
+}
 
 export type CreateDoctorMutationVariables = Exact<{
-  password: Scalars['String'];
-  username: Scalars['String'];
-  cabinetId: Scalars['String'];
-}>;
+  password: Scalars['String']
+  username: Scalars['String']
+  cabinetId: Scalars['String']
+}>
 
-
-export type CreateDoctorMutation = (
-  { __typename?: 'Mutation' }
-  & { createUserClient: (
-    { __typename?: 'Profile' }
-    & Pick<Profile, 'id' | 'username'>
-  ) }
-);
+export type CreateDoctorMutation = { __typename?: 'Mutation' } & {
+  createUserClient: { __typename?: 'Profile' } & Pick<
+    Profile,
+    'id' | 'username'
+  >
+}
 
 export type CreateUserSessionMutationVariables = Exact<{
-  username: Scalars['String'];
-  password: Scalars['String'];
-}>;
+  username: Scalars['String']
+  password: Scalars['String']
+}>
 
+export type CreateUserSessionMutation = { __typename?: 'Mutation' } & {
+  createUserSession: { __typename?: 'UserSession' } & Pick<
+    UserSession,
+    'expiresAt' | 'createdAt'
+  > & { user: { __typename?: 'User' } & Pick<User, 'username' | 'role'> }
+}
 
-export type CreateUserSessionMutation = (
-  { __typename?: 'Mutation' }
-  & { createUserSession: (
-    { __typename?: 'UserSession' }
-    & Pick<UserSession, 'expiresAt' | 'createdAt'>
-    & { user: (
-      { __typename?: 'User' }
-      & Pick<User, 'username' | 'role'>
-    ) }
-  ) }
-);
+export type LogoutMutationVariables = Exact<{ [key: string]: never }>
 
-export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LogoutMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'deleteUserSession'>
-);
+export type LogoutMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'deleteUserSession'
+>
 
 export type RegisterMutationVariables = Exact<{
-  username: Scalars['String'];
-  password: Scalars['String'];
-}>;
+  username: Scalars['String']
+  password: Scalars['String']
+}>
 
+export type RegisterMutation = { __typename?: 'Mutation' } & {
+  createUser: { __typename?: 'User' } & Pick<User, 'username' | 'role'>
+}
 
-export type RegisterMutation = (
-  { __typename?: 'Mutation' }
-  & { createUser: (
-    { __typename?: 'User' }
-    & Pick<User, 'username' | 'role'>
-  ) }
-);
+export type GetAllCabinetQueryVariables = Exact<{ [key: string]: never }>
 
-export type GetAllCabinetQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllCabinetQuery = (
-  { __typename?: 'Query' }
-  & { allCabinet?: Maybe<Array<Maybe<(
-    { __typename?: 'Cabinet' }
-    & Pick<Cabinet, 'id' | 'name' | 'address' | 'phone'>
-  )>>> }
-);
+export type GetAllCabinetQuery = { __typename?: 'Query' } & {
+  allCabinet?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Cabinet' } & Pick<
+          Cabinet,
+          'id' | 'name' | 'address' | 'phone'
+        >
+      >
+    >
+  >
+}
 
 export type GetCabinetByIdQueryVariables = Exact<{
-  cabinetId: Scalars['String'];
-}>;
+  cabinetId: Scalars['String']
+}>
 
-
-export type GetCabinetByIdQuery = (
-  { __typename?: 'Query' }
-  & { getCabinetById?: Maybe<(
-    { __typename?: 'Cabinet' }
-    & Pick<Cabinet, 'id' | 'name' | 'address' | 'phone'>
-  )> }
-);
-
-export type MeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MeQuery = (
-  { __typename?: 'Query' }
-  & { userSession?: Maybe<(
-    { __typename?: 'UserSession' }
-    & { user: (
-      { __typename?: 'User' }
-      & Pick<User, 'username' | 'role'>
-    ) }
-  )> }
-);
-
-
-export const CreateCabinetDocument = gql`
-    mutation CreateCabinet($name: String!, $address: String!, $phone: String!) {
-  createCabinet(name: $name, address: $address, phone: $phone) {
-    id
-    name
-    address
-    phone
-  }
+export type GetCabinetByIdQuery = { __typename?: 'Query' } & {
+  getCabinetById?: Maybe<
+    { __typename?: 'Cabinet' } & Pick<
+      Cabinet,
+      'id' | 'name' | 'address' | 'phone'
+    >
+  >
 }
-    `;
-export type CreateCabinetMutationFn = Apollo.MutationFunction<CreateCabinetMutation, CreateCabinetMutationVariables>;
+
+export type GetAllPatientsQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetAllPatientsQuery = { __typename?: 'Query' } & {
+  getAllPatients?: Maybe<
+    Array<Maybe<{ __typename?: 'Patient' } & PatientDefaultFragment>>
+  >
+}
+
+export type MeQueryVariables = Exact<{ [key: string]: never }>
+
+export type MeQuery = { __typename?: 'Query' } & {
+  userSession?: Maybe<
+    { __typename?: 'UserSession' } & {
+      user: { __typename?: 'User' } & Pick<User, 'username' | 'role'>
+    }
+  >
+}
+
+export const PatientDefaultFragmentDoc = gql`
+  fragment PatientDefault on Patient {
+    id
+    cin
+    sex
+    firstName
+    lastName
+    email
+    address
+    zipCode
+    assurance
+    birthday
+    profession
+    country
+    numberPhone
+  }
+`
+export const CreateCabinetDocument = gql`
+  mutation CreateCabinet($name: String!, $address: String!, $phone: String!) {
+    createCabinet(name: $name, address: $address, phone: $phone) {
+      id
+      name
+      address
+      phone
+    }
+  }
+`
+export type CreateCabinetMutationFn = Apollo.MutationFunction<
+  CreateCabinetMutation,
+  CreateCabinetMutationVariables
+>
 
 /**
  * __useCreateCabinetMutation__
@@ -267,27 +337,125 @@ export type CreateCabinetMutationFn = Apollo.MutationFunction<CreateCabinetMutat
  *   },
  * });
  */
-export function useCreateCabinetMutation(baseOptions?: Apollo.MutationHookOptions<CreateCabinetMutation, CreateCabinetMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateCabinetMutation, CreateCabinetMutationVariables>(CreateCabinetDocument, options);
-      }
-export type CreateCabinetMutationHookResult = ReturnType<typeof useCreateCabinetMutation>;
-export type CreateCabinetMutationResult = Apollo.MutationResult<CreateCabinetMutation>;
-export type CreateCabinetMutationOptions = Apollo.BaseMutationOptions<CreateCabinetMutation, CreateCabinetMutationVariables>;
-export const CreateAssistantDocument = gql`
-    mutation CreateAssistant($password: String!, $username: String!, $cabinetId: String!) {
-  createUserClient(
-    password: $password
-    username: $username
-    role: "assistant"
-    cabinetId: $cabinetId
-  ) {
-    id
-    username
-  }
+export function useCreateCabinetMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateCabinetMutation,
+    CreateCabinetMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    CreateCabinetMutation,
+    CreateCabinetMutationVariables
+  >(CreateCabinetDocument, options)
 }
-    `;
-export type CreateAssistantMutationFn = Apollo.MutationFunction<CreateAssistantMutation, CreateAssistantMutationVariables>;
+export type CreateCabinetMutationHookResult = ReturnType<
+  typeof useCreateCabinetMutation
+>
+export type CreateCabinetMutationResult = Apollo.MutationResult<CreateCabinetMutation>
+export type CreateCabinetMutationOptions = Apollo.BaseMutationOptions<
+  CreateCabinetMutation,
+  CreateCabinetMutationVariables
+>
+export const CreatePatientDocument = gql`
+  mutation CreatePatient(
+    $cin: String!
+    $sex: String
+    $firstName: String
+    $lastName: String
+    $email: String
+    $address: String
+    $zipCode: Int
+    $assurance: String
+    $profession: String
+  ) {
+    createPatient(
+      cin: $cin
+      sex: $sex
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      address: $address
+      zipCode: $zipCode
+      assurance: $assurance
+      profession: $profession
+    ) {
+      ...PatientDefault
+    }
+  }
+  ${PatientDefaultFragmentDoc}
+`
+export type CreatePatientMutationFn = Apollo.MutationFunction<
+  CreatePatientMutation,
+  CreatePatientMutationVariables
+>
+
+/**
+ * __useCreatePatientMutation__
+ *
+ * To run a mutation, you first call `useCreatePatientMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreatePatientMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createPatientMutation, { data, loading, error }] = useCreatePatientMutation({
+ *   variables: {
+ *      cin: // value for 'cin'
+ *      sex: // value for 'sex'
+ *      firstName: // value for 'firstName'
+ *      lastName: // value for 'lastName'
+ *      email: // value for 'email'
+ *      address: // value for 'address'
+ *      zipCode: // value for 'zipCode'
+ *      assurance: // value for 'assurance'
+ *      profession: // value for 'profession'
+ *   },
+ * });
+ */
+export function useCreatePatientMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreatePatientMutation,
+    CreatePatientMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    CreatePatientMutation,
+    CreatePatientMutationVariables
+  >(CreatePatientDocument, options)
+}
+export type CreatePatientMutationHookResult = ReturnType<
+  typeof useCreatePatientMutation
+>
+export type CreatePatientMutationResult = Apollo.MutationResult<CreatePatientMutation>
+export type CreatePatientMutationOptions = Apollo.BaseMutationOptions<
+  CreatePatientMutation,
+  CreatePatientMutationVariables
+>
+export const CreateAssistantDocument = gql`
+  mutation CreateAssistant(
+    $password: String!
+    $username: String!
+    $cabinetId: String!
+  ) {
+    createUserClient(
+      password: $password
+      username: $username
+      role: "assistant"
+      cabinetId: $cabinetId
+    ) {
+      id
+      username
+    }
+  }
+`
+export type CreateAssistantMutationFn = Apollo.MutationFunction<
+  CreateAssistantMutation,
+  CreateAssistantMutationVariables
+>
 
 /**
  * __useCreateAssistantMutation__
@@ -308,27 +476,47 @@ export type CreateAssistantMutationFn = Apollo.MutationFunction<CreateAssistantM
  *   },
  * });
  */
-export function useCreateAssistantMutation(baseOptions?: Apollo.MutationHookOptions<CreateAssistantMutation, CreateAssistantMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateAssistantMutation, CreateAssistantMutationVariables>(CreateAssistantDocument, options);
-      }
-export type CreateAssistantMutationHookResult = ReturnType<typeof useCreateAssistantMutation>;
-export type CreateAssistantMutationResult = Apollo.MutationResult<CreateAssistantMutation>;
-export type CreateAssistantMutationOptions = Apollo.BaseMutationOptions<CreateAssistantMutation, CreateAssistantMutationVariables>;
-export const CreateDoctorDocument = gql`
-    mutation CreateDoctor($password: String!, $username: String!, $cabinetId: String!) {
-  createUserClient(
-    password: $password
-    username: $username
-    role: "doctor"
-    cabinetId: $cabinetId
-  ) {
-    id
-    username
-  }
+export function useCreateAssistantMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateAssistantMutation,
+    CreateAssistantMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    CreateAssistantMutation,
+    CreateAssistantMutationVariables
+  >(CreateAssistantDocument, options)
 }
-    `;
-export type CreateDoctorMutationFn = Apollo.MutationFunction<CreateDoctorMutation, CreateDoctorMutationVariables>;
+export type CreateAssistantMutationHookResult = ReturnType<
+  typeof useCreateAssistantMutation
+>
+export type CreateAssistantMutationResult = Apollo.MutationResult<CreateAssistantMutation>
+export type CreateAssistantMutationOptions = Apollo.BaseMutationOptions<
+  CreateAssistantMutation,
+  CreateAssistantMutationVariables
+>
+export const CreateDoctorDocument = gql`
+  mutation CreateDoctor(
+    $password: String!
+    $username: String!
+    $cabinetId: String!
+  ) {
+    createUserClient(
+      password: $password
+      username: $username
+      role: "doctor"
+      cabinetId: $cabinetId
+    ) {
+      id
+      username
+    }
+  }
+`
+export type CreateDoctorMutationFn = Apollo.MutationFunction<
+  CreateDoctorMutation,
+  CreateDoctorMutationVariables
+>
 
 /**
  * __useCreateDoctorMutation__
@@ -349,26 +537,42 @@ export type CreateDoctorMutationFn = Apollo.MutationFunction<CreateDoctorMutatio
  *   },
  * });
  */
-export function useCreateDoctorMutation(baseOptions?: Apollo.MutationHookOptions<CreateDoctorMutation, CreateDoctorMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateDoctorMutation, CreateDoctorMutationVariables>(CreateDoctorDocument, options);
-      }
-export type CreateDoctorMutationHookResult = ReturnType<typeof useCreateDoctorMutation>;
-export type CreateDoctorMutationResult = Apollo.MutationResult<CreateDoctorMutation>;
-export type CreateDoctorMutationOptions = Apollo.BaseMutationOptions<CreateDoctorMutation, CreateDoctorMutationVariables>;
-export const CreateUserSessionDocument = gql`
-    mutation CreateUserSession($username: String!, $password: String!) {
-  createUserSession(username: $username, password: $password) {
-    user {
-      username
-      role
-    }
-    expiresAt
-    createdAt
-  }
+export function useCreateDoctorMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateDoctorMutation,
+    CreateDoctorMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    CreateDoctorMutation,
+    CreateDoctorMutationVariables
+  >(CreateDoctorDocument, options)
 }
-    `;
-export type CreateUserSessionMutationFn = Apollo.MutationFunction<CreateUserSessionMutation, CreateUserSessionMutationVariables>;
+export type CreateDoctorMutationHookResult = ReturnType<
+  typeof useCreateDoctorMutation
+>
+export type CreateDoctorMutationResult = Apollo.MutationResult<CreateDoctorMutation>
+export type CreateDoctorMutationOptions = Apollo.BaseMutationOptions<
+  CreateDoctorMutation,
+  CreateDoctorMutationVariables
+>
+export const CreateUserSessionDocument = gql`
+  mutation CreateUserSession($username: String!, $password: String!) {
+    createUserSession(username: $username, password: $password) {
+      user {
+        username
+        role
+      }
+      expiresAt
+      createdAt
+    }
+  }
+`
+export type CreateUserSessionMutationFn = Apollo.MutationFunction<
+  CreateUserSessionMutation,
+  CreateUserSessionMutationVariables
+>
 
 /**
  * __useCreateUserSessionMutation__
@@ -388,19 +592,35 @@ export type CreateUserSessionMutationFn = Apollo.MutationFunction<CreateUserSess
  *   },
  * });
  */
-export function useCreateUserSessionMutation(baseOptions?: Apollo.MutationHookOptions<CreateUserSessionMutation, CreateUserSessionMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateUserSessionMutation, CreateUserSessionMutationVariables>(CreateUserSessionDocument, options);
-      }
-export type CreateUserSessionMutationHookResult = ReturnType<typeof useCreateUserSessionMutation>;
-export type CreateUserSessionMutationResult = Apollo.MutationResult<CreateUserSessionMutation>;
-export type CreateUserSessionMutationOptions = Apollo.BaseMutationOptions<CreateUserSessionMutation, CreateUserSessionMutationVariables>;
-export const LogoutDocument = gql`
-    mutation Logout {
-  deleteUserSession(me: true)
+export function useCreateUserSessionMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateUserSessionMutation,
+    CreateUserSessionMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    CreateUserSessionMutation,
+    CreateUserSessionMutationVariables
+  >(CreateUserSessionDocument, options)
 }
-    `;
-export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMutationVariables>;
+export type CreateUserSessionMutationHookResult = ReturnType<
+  typeof useCreateUserSessionMutation
+>
+export type CreateUserSessionMutationResult = Apollo.MutationResult<CreateUserSessionMutation>
+export type CreateUserSessionMutationOptions = Apollo.BaseMutationOptions<
+  CreateUserSessionMutation,
+  CreateUserSessionMutationVariables
+>
+export const LogoutDocument = gql`
+  mutation Logout {
+    deleteUserSession(me: true)
+  }
+`
+export type LogoutMutationFn = Apollo.MutationFunction<
+  LogoutMutation,
+  LogoutMutationVariables
+>
 
 /**
  * __useLogoutMutation__
@@ -418,22 +638,36 @@ export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMut
  *   },
  * });
  */
-export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, options);
-      }
-export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
-export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
-export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
-export const RegisterDocument = gql`
-    mutation Register($username: String!, $password: String!) {
-  createUser(password: $password, username: $username, role: "admin") {
-    username
-    role
-  }
+export function useLogoutMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    LogoutMutation,
+    LogoutMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(
+    LogoutDocument,
+    options
+  )
 }
-    `;
-export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>;
+export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>
+export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>
+export type LogoutMutationOptions = Apollo.BaseMutationOptions<
+  LogoutMutation,
+  LogoutMutationVariables
+>
+export const RegisterDocument = gql`
+  mutation Register($username: String!, $password: String!) {
+    createUser(password: $password, username: $username, role: "admin") {
+      username
+      role
+    }
+  }
+`
+export type RegisterMutationFn = Apollo.MutationFunction<
+  RegisterMutation,
+  RegisterMutationVariables
+>
 
 /**
  * __useRegisterMutation__
@@ -453,23 +687,34 @@ export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, Regis
  *   },
  * });
  */
-export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options);
-      }
-export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
-export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
-export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
-export const GetAllCabinetDocument = gql`
-    query getAllCabinet {
-  allCabinet {
-    id
-    name
-    address
-    phone
-  }
+export function useRegisterMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    RegisterMutation,
+    RegisterMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(
+    RegisterDocument,
+    options
+  )
 }
-    `;
+export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
+export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>
+export type RegisterMutationOptions = Apollo.BaseMutationOptions<
+  RegisterMutation,
+  RegisterMutationVariables
+>
+export const GetAllCabinetDocument = gql`
+  query getAllCabinet {
+    allCabinet {
+      id
+      name
+      address
+      phone
+    }
+  }
+`
 
 /**
  * __useGetAllCabinetQuery__
@@ -486,27 +731,50 @@ export const GetAllCabinetDocument = gql`
  *   },
  * });
  */
-export function useGetAllCabinetQuery(baseOptions?: Apollo.QueryHookOptions<GetAllCabinetQuery, GetAllCabinetQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAllCabinetQuery, GetAllCabinetQueryVariables>(GetAllCabinetDocument, options);
-      }
-export function useGetAllCabinetLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllCabinetQuery, GetAllCabinetQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAllCabinetQuery, GetAllCabinetQueryVariables>(GetAllCabinetDocument, options);
-        }
-export type GetAllCabinetQueryHookResult = ReturnType<typeof useGetAllCabinetQuery>;
-export type GetAllCabinetLazyQueryHookResult = ReturnType<typeof useGetAllCabinetLazyQuery>;
-export type GetAllCabinetQueryResult = Apollo.QueryResult<GetAllCabinetQuery, GetAllCabinetQueryVariables>;
-export const GetCabinetByIdDocument = gql`
-    query GetCabinetById($cabinetId: String!) {
-  getCabinetById(cabinetId: $cabinetId) {
-    id
-    name
-    address
-    phone
-  }
+export function useGetAllCabinetQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetAllCabinetQuery,
+    GetAllCabinetQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetAllCabinetQuery, GetAllCabinetQueryVariables>(
+    GetAllCabinetDocument,
+    options
+  )
 }
-    `;
+export function useGetAllCabinetLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetAllCabinetQuery,
+    GetAllCabinetQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetAllCabinetQuery, GetAllCabinetQueryVariables>(
+    GetAllCabinetDocument,
+    options
+  )
+}
+export type GetAllCabinetQueryHookResult = ReturnType<
+  typeof useGetAllCabinetQuery
+>
+export type GetAllCabinetLazyQueryHookResult = ReturnType<
+  typeof useGetAllCabinetLazyQuery
+>
+export type GetAllCabinetQueryResult = Apollo.QueryResult<
+  GetAllCabinetQuery,
+  GetAllCabinetQueryVariables
+>
+export const GetCabinetByIdDocument = gql`
+  query GetCabinetById($cabinetId: String!) {
+    getCabinetById(cabinetId: $cabinetId) {
+      id
+      name
+      address
+      phone
+    }
+  }
+`
 
 /**
  * __useGetCabinetByIdQuery__
@@ -524,27 +792,108 @@ export const GetCabinetByIdDocument = gql`
  *   },
  * });
  */
-export function useGetCabinetByIdQuery(baseOptions: Apollo.QueryHookOptions<GetCabinetByIdQuery, GetCabinetByIdQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCabinetByIdQuery, GetCabinetByIdQueryVariables>(GetCabinetByIdDocument, options);
-      }
-export function useGetCabinetByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCabinetByIdQuery, GetCabinetByIdQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCabinetByIdQuery, GetCabinetByIdQueryVariables>(GetCabinetByIdDocument, options);
-        }
-export type GetCabinetByIdQueryHookResult = ReturnType<typeof useGetCabinetByIdQuery>;
-export type GetCabinetByIdLazyQueryHookResult = ReturnType<typeof useGetCabinetByIdLazyQuery>;
-export type GetCabinetByIdQueryResult = Apollo.QueryResult<GetCabinetByIdQuery, GetCabinetByIdQueryVariables>;
-export const MeDocument = gql`
-    query Me {
-  userSession(me: true) {
-    user {
-      username
-      role
+export function useGetCabinetByIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetCabinetByIdQuery,
+    GetCabinetByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetCabinetByIdQuery, GetCabinetByIdQueryVariables>(
+    GetCabinetByIdDocument,
+    options
+  )
+}
+export function useGetCabinetByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCabinetByIdQuery,
+    GetCabinetByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetCabinetByIdQuery, GetCabinetByIdQueryVariables>(
+    GetCabinetByIdDocument,
+    options
+  )
+}
+export type GetCabinetByIdQueryHookResult = ReturnType<
+  typeof useGetCabinetByIdQuery
+>
+export type GetCabinetByIdLazyQueryHookResult = ReturnType<
+  typeof useGetCabinetByIdLazyQuery
+>
+export type GetCabinetByIdQueryResult = Apollo.QueryResult<
+  GetCabinetByIdQuery,
+  GetCabinetByIdQueryVariables
+>
+export const GetAllPatientsDocument = gql`
+  query GetAllPatients {
+    getAllPatients {
+      ...PatientDefault
     }
   }
+  ${PatientDefaultFragmentDoc}
+`
+
+/**
+ * __useGetAllPatientsQuery__
+ *
+ * To run a query within a React component, call `useGetAllPatientsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllPatientsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllPatientsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllPatientsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetAllPatientsQuery,
+    GetAllPatientsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetAllPatientsQuery, GetAllPatientsQueryVariables>(
+    GetAllPatientsDocument,
+    options
+  )
 }
-    `;
+export function useGetAllPatientsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetAllPatientsQuery,
+    GetAllPatientsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetAllPatientsQuery, GetAllPatientsQueryVariables>(
+    GetAllPatientsDocument,
+    options
+  )
+}
+export type GetAllPatientsQueryHookResult = ReturnType<
+  typeof useGetAllPatientsQuery
+>
+export type GetAllPatientsLazyQueryHookResult = ReturnType<
+  typeof useGetAllPatientsLazyQuery
+>
+export type GetAllPatientsQueryResult = Apollo.QueryResult<
+  GetAllPatientsQuery,
+  GetAllPatientsQueryVariables
+>
+export const MeDocument = gql`
+  query Me {
+    userSession(me: true) {
+      user {
+        username
+        role
+      }
+    }
+  }
+`
 
 /**
  * __useMeQuery__
@@ -561,14 +910,18 @@ export const MeDocument = gql`
  *   },
  * });
  */
-export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
-      }
-export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
-        }
-export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
-export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
-export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
+export function useMeQuery(
+  baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options)
+}
+export function useMeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options)
+}
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>
