@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useGetAllPatientsQuery } from '../../../graphql/generated/graphql'
 const ListPatients: React.FC = () => {
   const { data } = useGetAllPatientsQuery()
@@ -24,7 +25,10 @@ const ListPatients: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <a href="#s" className="focus:outline-none">
+                  <Link
+                    to={'/application/doctor/patients/' + person?.id}
+                    className="focus:outline-none"
+                  >
                     {/* Extend touch target to entire panel */}
                     <span className="absolute inset-0" aria-hidden="true" />
                     <p className="text-sm font-medium text-gray-900">
@@ -36,7 +40,7 @@ const ListPatients: React.FC = () => {
                     <p className="text-sm text-gray-500 truncate">
                       {person?.lastName}
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </li>

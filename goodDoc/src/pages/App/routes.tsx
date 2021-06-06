@@ -24,7 +24,7 @@ const Routes: React.FC = () => {
         <Switch>
           <Route path="/application/doctor">
             <Switch>
-              <Route exact path="/application/doctor/patients">
+              <Route path="/application/doctor/patients">
                 <Patients />
               </Route>
               <Route exact path="/application/doctor/calendrier">
