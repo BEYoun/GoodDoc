@@ -1,5 +1,6 @@
 import getConnection from "#root/db/connection";
 import Cabinet from "#root/db/entities/Cabinet";
+import Patient from "#root/db/entities/Patients";
 import Profile from "#root/db/entities/Profile";
 import generateUUID from "#root/helpers/generateUUID";
 import { Express } from "express";
@@ -10,6 +11,7 @@ const setupRoutes = (app: Express) => {
   const connection = getConnection();
   const cabinetRepository = getRepository(Cabinet);
   const profileRepository = getRepository(Profile);
+  const patientRepository = getRepository(Patient);
   app.post("/cabinet", async (req, res, next) => {
     if (!req.body.name) {
       return next(new Error("Invalid body!"));
@@ -68,6 +70,35 @@ const setupRoutes = (app: Express) => {
       if (!user) return next(new Error("Invalid user ID!"));
 
       return res.json(user);
+    } catch (err) {
+      return next(err);
+    }
+  });
+  app.post("/patient", async (req, res, next) => {
+    if (!req.body.cin) {
+      return next(new Error("no cin in body!!"));
+    }
+
+    try {
+      const newPatient = {
+        id: generateUUID(),
+        ...req.body
+      };
+
+      await connection.createQueryBuilder().insert().into(Patient).values([newPatient]).execute();
+
+      return res.json(newPatient);
+    } catch (err) {
+      return next(err);
+    }
+  });
+  app.get("/patients", async (req, res, next) => {
+    try {
+      const patients = await patientRepository.find();
+
+      if (!patients) return next(new Error("Invalid patients ID!"));
+
+      return res.json(patients);
     } catch (err) {
       return next(err);
     }

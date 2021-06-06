@@ -9,6 +9,21 @@ const schema = gql`
     address: String!
     phone: String!
   }
+  type Patient {
+    id: ID!
+    cin: String!
+    sex: String
+    firstName: String
+    lastName: String
+    email: String
+    address: String
+    zipCode: Int
+    assurance: String
+    birthday: String
+    profession: String
+    country: String
+    numberPhone: String
+  }
   
   type User {
     username: ID!
@@ -33,12 +48,27 @@ const schema = gql`
     deleteUserSession(me: Boolean!): Boolean!
     
     createCabinet(name: String!, address: String!, phone: String!): Cabinet!
+
+    createPatient(cin: String!
+        sex: String
+        firstName: String
+        lastName: String
+        email: String
+        address: String
+        zipCode: Int
+        assurance: String
+        birthday: String
+        profession: String
+        country: String
+        numberPhone: String): Patient!
+
   }
 
   type Query {
     userSession(me: Boolean!): UserSession
     allCabinet: [Cabinet]
     getCabinetById(cabinetId: String!): Cabinet
+    getAllPatients: [Patient]
   }
 `;
 
