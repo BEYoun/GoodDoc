@@ -4,10 +4,10 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Product', href: '#f' },
-  { name: 'Features', href: '#f' },
-  { name: 'Marketplace', href: '#f' },
-  { name: 'Company', href: '#f' },
+  { name: 'Votre spécialités', href: '#f' },
+  { name: 'Solution', href: '#f' },
+  { name: 'Tarif', href: '#f' },
+  { name: 'Qui sommes-nous?', href: '#f' },
 ]
 
 const Header: React.FC = ({ children }) => {

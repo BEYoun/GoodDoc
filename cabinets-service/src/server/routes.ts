@@ -103,6 +103,17 @@ const setupRoutes = (app: Express) => {
       return next(err);
     }
   });
+  app.get("/patient/:patientId", async (req, res, next) => {
+    try {
+      const patient = await patientRepository.findOne(req.params.patientId);
+
+      if (!patient) return next(new Error("Invalid patients ID!"));
+
+      return res.json(patient);
+    } catch (err) {
+      return next(err);
+    }
+  });
 };
 
 export default setupRoutes;

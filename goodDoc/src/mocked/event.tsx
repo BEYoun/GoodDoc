@@ -14,13 +14,13 @@ export const INITIAL_EVENTS: EventInput[] = [
     title: 'Timed event',
     start: todayStr + 'T09:00:00',
   },
-  {
-    daysOfWeek: ['1', '2', '3', '4', '5'], // these recurrent events move separately
-    startTime: '12:00:00',
-    endTime: '13:00:00',
-    color: 'orange',
-    title: 'lunch',
-  },
+  // {
+  //   daysOfWeek: ['1', '2', '3', '4', '5'], // these recurrent events move separately
+  //   startTime: '12:00:00',
+  //   endTime: '13:00:00',
+  //   color: 'orange',
+  //   title: 'lunch',
+  // },
 ]
 
 export function createEventId() {

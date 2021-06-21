@@ -117,6 +117,7 @@ export type Query = {
   allCabinet?: Maybe<Array<Maybe<Cabinet>>>
   getCabinetById?: Maybe<Cabinet>
   getAllPatients?: Maybe<Array<Maybe<Patient>>>
+  getPatientById: Patient
 }
 
 export type QueryUserSessionArgs = {
@@ -125,6 +126,10 @@ export type QueryUserSessionArgs = {
 
 export type QueryGetCabinetByIdArgs = {
   cabinetId: Scalars['String']
+}
+
+export type QueryGetPatientByIdArgs = {
+  patientId: Scalars['String']
 }
 
 export type User = {
@@ -274,6 +279,14 @@ export type GetAllPatientsQuery = { __typename?: 'Query' } & {
   getAllPatients?: Maybe<
     Array<Maybe<{ __typename?: 'Patient' } & PatientDefaultFragment>>
   >
+}
+
+export type GetPatientByIdQueryVariables = Exact<{
+  patientId: Scalars['String']
+}>
+
+export type GetPatientByIdQuery = { __typename?: 'Query' } & {
+  getPatientById: { __typename?: 'Patient' } & PatientDefaultFragment
 }
 
 export type MeQueryVariables = Exact<{ [key: string]: never }>
@@ -883,6 +896,65 @@ export type GetAllPatientsLazyQueryHookResult = ReturnType<
 export type GetAllPatientsQueryResult = Apollo.QueryResult<
   GetAllPatientsQuery,
   GetAllPatientsQueryVariables
+>
+export const GetPatientByIdDocument = gql`
+  query getPatientById($patientId: String!) {
+    getPatientById(patientId: $patientId) {
+      ...PatientDefault
+    }
+  }
+  ${PatientDefaultFragmentDoc}
+`
+
+/**
+ * __useGetPatientByIdQuery__
+ *
+ * To run a query within a React component, call `useGetPatientByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPatientByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPatientByIdQuery({
+ *   variables: {
+ *      patientId: // value for 'patientId'
+ *   },
+ * });
+ */
+export function useGetPatientByIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetPatientByIdQuery,
+    GetPatientByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetPatientByIdQuery, GetPatientByIdQueryVariables>(
+    GetPatientByIdDocument,
+    options
+  )
+}
+export function useGetPatientByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetPatientByIdQuery,
+    GetPatientByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetPatientByIdQuery, GetPatientByIdQueryVariables>(
+    GetPatientByIdDocument,
+    options
+  )
+}
+export type GetPatientByIdQueryHookResult = ReturnType<
+  typeof useGetPatientByIdQuery
+>
+export type GetPatientByIdLazyQueryHookResult = ReturnType<
+  typeof useGetPatientByIdLazyQuery
+>
+export type GetPatientByIdQueryResult = Apollo.QueryResult<
+  GetPatientByIdQuery,
+  GetPatientByIdQueryVariables
 >
 export const MeDocument = gql`
   query Me {

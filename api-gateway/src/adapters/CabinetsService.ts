@@ -65,4 +65,8 @@ export default class CabinetsService {
       const body = await got.get(`${CABINETS_SERVICE_URI}/cabinet/${cabinetId}`).json();
       return <Cabinet>body;
     }
+    static async patientById({ patientId }: { patientId: string }): Promise<Cabinet | null> {
+      const body = await got.get(`${CABINETS_SERVICE_URI}/patient/${patientId}`).json();
+      return <Cabinet>body;
+    }
 }

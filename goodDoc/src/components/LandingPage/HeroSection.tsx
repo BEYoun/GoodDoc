@@ -21,14 +21,18 @@ const HeroSection: React.FC = () => {
                   aria-hidden="true"
                 />
               </a>
-              <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                <span className="block">A better way to</span>
-                <span className="block text-yellow-400">ship web apps</span>
+              <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-4xl">
+                <span className="block">La nouvelle génération de</span>
+                <span className="block text-yellow-400">
+                  solutions pour les praticiens
+                </span>
               </h1>
               <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                Lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat.
+                Equipez vous de GooDoc et <br />
+                gagnez du temps au quotidien <br />
+                gagnez en confort de travail <br />
+                améliorez la prise en charge de vos patients <br />
+                développez votre activité <br />
               </p>
               <div className="mt-10 sm:mt-12">
                 <form action="#f" className="sm:max-w-xl sm:mx-auto lg:mx-0">

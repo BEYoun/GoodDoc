@@ -8,7 +8,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.SERVICES_URI': JSON.stringify('http://15.188.192.214'),
+      'process.env.SERVICES_URI': JSON.stringify('http://52.47.35.171'),
     }),
   ],
 }

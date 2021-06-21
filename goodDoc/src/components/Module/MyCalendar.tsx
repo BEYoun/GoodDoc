@@ -5,22 +5,23 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { createEventId, INITIAL_EVENTS } from '../../mocked/event'
 
-export default class MyCalendar extends React.Component {
+interface Props {
+  setRef: React.RefObject<FullCalendar>
+}
+export default class MyCalendar extends React.Component<Props> {
   render() {
     return (
       <FullCalendar
+        ref={this.props.setRef}
         viewClassNames="absolute w-full max-h-full right-0 left-0 top-2"
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
+        height="100%"
         editable={true}
         selectable={true}
         selectMirror={true}
         dayMaxEvents={true}
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        }}
+        headerToolbar={false}
         select={this.handleDateSelect}
         businessHours={[
           {

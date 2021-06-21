@@ -116,7 +116,7 @@ const AddPatient: React.FC = () => {
                         as="h3"
                         className="text-lg leading-6 font-medium text-gray-900"
                       >
-                        Création nouveau cabinet
+                        Création nouveau Patient
                       </Dialog.Title>
                     </div>
                   </div>

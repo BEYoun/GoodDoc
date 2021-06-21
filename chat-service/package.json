@@ -23,6 +23,6 @@
     "express": "^4.17.1"
   },
   "_moduleAliases": {
-    "#root": "./src"
+    "#root": "./dist/src"
   }
 }

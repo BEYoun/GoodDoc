@@ -69,6 +69,7 @@ const schema = gql`
     allCabinet: [Cabinet]
     getCabinetById(cabinetId: String!): Cabinet
     getAllPatients: [Patient]
+    getPatientById(patientId: String!): Patient!
   }
 `;
 
