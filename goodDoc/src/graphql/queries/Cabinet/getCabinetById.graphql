@@ -1,8 +1,0 @@
-query GetCabinetById($cabinetId: String!) {
-  getCabinetById(cabinetId: $cabinetId) {
-    id
-    name
-    address
-    phone
-  }
-}

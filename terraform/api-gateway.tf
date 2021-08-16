@@ -12,6 +12,7 @@ module "api-gateway" {
   subnet-id            = aws_subnet.microservices-demo-subnet-public.id
   vpc-security-group-ids = [
     aws_security_group.allow-http.id,
+    aws_security_group.allow-https.id,
     aws_security_group.allow-ssh.id,
     aws_security_group.allow-all-outbound.id
   ]

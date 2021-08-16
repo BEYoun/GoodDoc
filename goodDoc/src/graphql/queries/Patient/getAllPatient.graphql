@@ -1,5 +1,0 @@
-query GetAllPatients {
-  getAllPatients {
-    ...PatientDefault
-  }
-}

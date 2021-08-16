@@ -1,1 +1,0 @@
-aws s3 sync build s3://younes-microservice-goodoc-app --delete --profile microservices-goodoc

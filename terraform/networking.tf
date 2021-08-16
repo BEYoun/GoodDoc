@@ -60,6 +60,19 @@ resource "aws_security_group" "allow-internal-mysql" {
   }
 }
 
+resource "aws_security_group" "allow-https" {
+  name        = "allow-https"
+  description = "Allow HTTPs inbound traffic"
+  vpc_id      = aws_vpc.microservices-demo.id
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_security_group" "allow-http" {
   name        = "allow-http"
   description = "Allow HTTP inbound traffic"

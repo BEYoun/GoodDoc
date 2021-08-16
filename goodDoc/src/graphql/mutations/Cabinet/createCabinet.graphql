@@ -1,8 +1,0 @@
-mutation CreateCabinet($name: String!, $address: String!, $phone: String!) {
-  createCabinet(name: $name, address: $address, phone: $phone) {
-    id
-    name
-    address
-    phone
-  }
-}

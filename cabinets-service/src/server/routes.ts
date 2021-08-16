@@ -3,6 +3,7 @@ import Cabinet from "#root/db/entities/Cabinet";
 import Patient from "#root/db/entities/Patients";
 import Profile from "#root/db/entities/Profile";
 import generateUUID from "#root/helpers/generateUUID";
+import DoctorsDb from "#root/inMemoryDB";
 import { Express } from "express";
 import { getRepository } from "typeorm";
 
@@ -114,6 +115,10 @@ const setupRoutes = (app: Express) => {
       return next(err);
     }
   });
+  app.get('/inMemoryDoctors', async (req, res, next) => {
+    const doctors = DoctorsDb.instance.getAll();
+    return res.json(doctors);
+  })
 };
 
 export default setupRoutes;
