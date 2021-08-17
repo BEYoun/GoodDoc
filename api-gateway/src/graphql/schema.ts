@@ -29,6 +29,16 @@ const schema = gql`
     username: ID!
     role: String!
   }
+
+  type DoctorDb {
+    id: String!
+    lastName: String!
+    firstName: String!
+    adresse: String!
+    numberPhone: String!
+    speciality: String!
+  }
+
   type Profile {
     id: ID!
     username: String!
@@ -68,6 +78,7 @@ const schema = gql`
     userSession(me: Boolean!): UserSession
     allCabinet: [Cabinet]
     getCabinetById(cabinetId: String!): Cabinet
+    getDoctors: [DoctorDb]
     getAllPatients: [Patient]
     getPatientById(patientId: String!): Patient!
   }

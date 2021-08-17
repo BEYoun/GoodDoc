@@ -13,6 +13,8 @@ const setupRoutes = (app: Express) => {
   const cabinetRepository = getRepository(Cabinet);
   const profileRepository = getRepository(Profile);
   const patientRepository = getRepository(Patient);
+
+  const dotorsInMemoRepo = DoctorsDb.instance;
   app.post("/cabinet", async (req, res, next) => {
     if (!req.body.name) {
       return next(new Error("Invalid body!"));
@@ -116,7 +118,7 @@ const setupRoutes = (app: Express) => {
     }
   });
   app.get('/inMemoryDoctors', async (req, res, next) => {
-    const doctors = DoctorsDb.instance.getAll();
+    const doctors = dotorsInMemoRepo.getAll();
     return res.json(doctors);
   })
 };

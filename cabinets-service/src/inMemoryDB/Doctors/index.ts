@@ -1,31 +1,26 @@
-import { BaseRecord, DataBase } from "../common";
+import generateUUID from '#root/helpers/generateUUID';
+import { createDatabase } from '../common';
+import SpecialityDb from '../Specialities';
+import data from './doctorsDB.json'
 
 export interface Doctors {
     id: string;
     lastName: string;
     firstName: string;
-    Adresse: string;
+    adresse: string;
     numberPhone: string;
+    speciality: string;
 }
 
-export function createDatabase<T extends BaseRecord>() {
-    class InMemoryDatabase implements DataBase<T>{
-        private db: T[] = [];
+const DoctorsDb = createDatabase<Doctors>();
+const doctorsDb = DoctorsDb.instance;
+data.forEach((x) => {
+    doctorsDb.set({
+        ...x,
+        speciality: SpecialityDb.instance.get(x.speciality)?.name!,
+        id: generateUUID()
+    })
+})
 
-        static instance: InMemoryDatabase = new InMemoryDatabase()
+export default DoctorsDb;
 
-        private constructor() {}
-
-        public set(newValue: T): void {
-            this.db.push(newValue);
-        }
-        public get(id: string): T | undefined {
-            return this.db.find((x)=>x.id===id)
-        }
-        public getAll() {
-            return this.db;
-        }
-    }
-
-    return InMemoryDatabase;
-}

@@ -28,6 +28,10 @@ resource "aws_route_table_association" "microservices-demo-subnet-public" {
   subnet_id      = aws_subnet.microservices-demo-subnet-public.id
   route_table_id = aws_route_table.allow-outgoing-access.id
 }
+resource "aws_route_table_association" "microservices-demo-subnet-public-2" {
+  subnet_id      = aws_subnet.microservices-demo-subnet-public-2.id
+  route_table_id = aws_route_table.allow-outgoing-access.id
+}
 
 resource "aws_route_table_association" "microservices-demo-subnet-private-1" {
   subnet_id      = aws_subnet.microservices-demo-subnet-private-1.id
@@ -129,6 +133,16 @@ resource "aws_subnet" "microservices-demo-subnet-private-1" {
 
   tags = {
     Name = "Microservices Demo Subnet (Private 1)"
+  }
+}
+
+resource "aws_subnet" "microservices-demo-subnet-public-2" {
+  availability_zone_id = "euw3-az2"
+  cidr_block           = "10.0.3.0/24"
+  vpc_id               = aws_vpc.microservices-demo.id
+
+  tags = {
+    Name = "Microservices Demo Subnet (Public)"
   }
 }
 

@@ -1,4 +1,5 @@
-import CabinetsService, { PatientInput } from "#root/adapters/CabinetsService";
+import CabinetsService from "#root/adapters/CabinetsService";
+import { PatientInput } from "#root/adapters/types/Cabinets";
 import { ResolverContext } from "#root/graphql/types";
 
 
