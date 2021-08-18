@@ -8,7 +8,7 @@ interface Args {
 }
 
 const createCabinet = async (obj: any, { name, phone, address }: Args, context: ResolverContext) => {
-    if (!context.res.locals.userSession) throw new Error("Not logged in!");
+  if (!context.res.locals.userSession) throw new Error("Not logged in!");
   return await CabinetsService.createCabinet({ name, address, phone });
 };
 

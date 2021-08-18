@@ -39,8 +39,12 @@ export default class UsersService {
   }
 
   static async fetchUserSession({ sessionId }: { sessionId: string }): Promise<UserSession | null> {
-    const body = await got.get(`${USERS_SERVICE_URI}/sessions/${sessionId}`).json();
-    if (!body) return null;
+    let body = undefined;
+    try {
+      body = await got.get(`${USERS_SERVICE_URI}/sessions/${sessionId}`).json();
+    } catch {
+      return null
+    }
     return <UserSession>body;
   }
 }
