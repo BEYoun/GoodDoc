@@ -19,21 +19,21 @@ const setupRoutes = (app: Express) => {
   const userSessionRepository = getRepository(UserSession);
 
   app.post("/sessions", async (req, res, next) => {
-    if (!req.body.username || !req.body.password) {
+    if (!req.body.email || !req.body.password) {
       return next(new Error("Invalid body!"));
     }
 
     try {
       const user = await userRepository.findOne(
         {
-          username: req.body.username,
+          email: req.body.email,
         },
         {
           select: ["id", "passwordHash"],
         }
       );
 
-      if (!user) return next(new Error("Invalid username!"));
+      if (!user) return next(new Error("Invalid email!"));
 
       if (!passwordCompareSync(req.body.password, user.passwordHash)) {
         return next(new Error("Invalid password!"));
@@ -84,7 +84,7 @@ const setupRoutes = (app: Express) => {
   });
 
   app.post("/users", async (req, res, next) => {
-    if (!req.body.username || !req.body.password) {
+    if (!req.body.email || !req.body.password) {
       return next(new Error("Invalid body!"));
     }
 
@@ -92,7 +92,7 @@ const setupRoutes = (app: Express) => {
       const newUser = {
         id: generateUUID(),
         passwordHash: hashPassword(req.body.password),
-        username: req.body.username,
+        email: req.body.email,
         role: req.body.role
       };
 
