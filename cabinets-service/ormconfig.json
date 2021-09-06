@@ -11,5 +11,5 @@
   ],
   "synchronize": true,
   "type": "mysql",
-  "url": "mysql://root:password@cabinets-service-db/db"
+  "url": "mysql://user:m1croservices@cabinets-service-db.cehxdsaeaauc.eu-west-3.rds.amazonaws.com:3306/db?charset=UTF8"
 }

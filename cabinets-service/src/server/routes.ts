@@ -4,6 +4,8 @@ import Patient from "#root/db/entities/Patients";
 import Profile from "#root/db/entities/Profile";
 import generateUUID from "#root/helpers/generateUUID";
 import DoctorsDb from "#root/inMemoryDB";
+import CityDB from "#root/inMemoryDB/Cities";
+import SpecialityDb from "#root/inMemoryDB/Specialities";
 import { Express } from "express";
 import { getRepository } from "typeorm";
 
@@ -15,6 +17,8 @@ const setupRoutes = (app: Express) => {
   const patientRepository = getRepository(Patient);
 
   const dotorsInMemoRepo = DoctorsDb.instance;
+  const cytiesInMemoRepo = CityDB.instance;
+  const specialitiesInMemoRepo = SpecialityDb.instance;
   app.post("/cabinet", async (req, res, next) => {
     if (!req.body.name) {
       return next(new Error("Invalid body!"));
@@ -125,6 +129,14 @@ const setupRoutes = (app: Express) => {
       page: 1
     }
     return res.json(response);
+  })
+  app.get('/inMemoryCities', async (req, res, next) => {
+    const cyties = cytiesInMemoRepo.getAll();
+    return res.json(cyties);
+  })
+  app.get('/inMemorySpecialities', async (req, res, next) => {
+    const specialities = specialitiesInMemoRepo.getAll();
+    return res.json(specialities);
   })
 };
 

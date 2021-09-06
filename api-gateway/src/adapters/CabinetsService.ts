@@ -1,6 +1,6 @@
 import accessEnv from "#root/helpers/accessEnv";
 import got from "got";
-import { Cabinet, Doctors, Patient, PatientInput, Profile } from "./types/Cabinets";
+import { Cabinet, City, Doctors, Patient, PatientInput, Profile, Speciality } from "./types/Cabinets";
 
 const CABINETS_SERVICE_URI = accessEnv("CABINETS_SERVICE_URI");
 
@@ -40,6 +40,14 @@ export default class CabinetsService {
   static async doctors() {
     const body = await got.get(`${CABINETS_SERVICE_URI}/inMemoryDoctors`).json();
     return <Doctors[]>body;
+  }
+  static async cities() {
+    const body = await got.get(`${CABINETS_SERVICE_URI}/inMemoryCities`).json();
+    return <City[]>body;
+  }
+  static async specialities() {
+    const body = await got.get(`${CABINETS_SERVICE_URI}/inMemorySpecialities`).json();
+    return <Speciality[]>body;
   }
     
 }

@@ -4,3 +4,5 @@ export { default as getCabinetById } from "./Cabinet/getCabinetById";
 export { default as getDoctors } from "./Cabinet/getDoctors";
 export { default as getAllPatients } from "./Patient/getAllPatients";
 export { default as getPatientById } from "./Patient/getPatientById";
+export { default as getCities } from "./General/getCities";
+export { default as getSpecialities } from "./General/getSpecialities";

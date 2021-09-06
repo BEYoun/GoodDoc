@@ -104,6 +104,8 @@ const schema = gql`
     getDoctors: PaginationDoctors!
     getAllPatients: [Patient]
     getPatientById(patientId: String!): Patient!
+    getCities: [City]
+    getSpecialities: [Speciality]
   }
 `;
 
