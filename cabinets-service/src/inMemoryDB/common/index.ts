@@ -1,11 +1,11 @@
 
 export interface BaseRecord {
-    id: string;
+    id: number;
 }
 
 export interface DataBase<T extends BaseRecord> {
     set(newValue: T): void
-    get(id: string): T | undefined
+    get(id: number): T | undefined
     getAll(): T[]
 }
 
@@ -22,7 +22,7 @@ export function createDatabase<T extends BaseRecord>() {
         public set(newValue: T): void {
             this.db.push(newValue);
         }
-        public get(id: string): T | undefined {
+        public get(id: number): T | undefined {
             return this.db.find((x)=>x.id===id)
         }
         public getAll() {

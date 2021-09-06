@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "goodoc-app" {
-    bucket = "younes-microservice-goodoc-app"
+    bucket = "goodoc-app"
     acl = "public-read"
     policy = <<POLICY
 {
@@ -10,7 +10,7 @@ resource "aws_s3_bucket" "goodoc-app" {
             "Effect" : "Allow",
             "Principal" : "*",
             "Action" : ["s3:GetObject"],
-            "Resource" : ["arn:aws:s3:::younes-microservice-goodoc-app/*"]
+            "Resource" : ["arn:aws:s3:::goodoc-app/*"]
         }
     ]
 }

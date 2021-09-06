@@ -26,22 +26,39 @@ const schema = gql`
   }
   
   type User {
-    username: ID!
+    email: ID!
     role: String!
   }
 
-  type DoctorDb {
-    id: String!
+  type City {
+    id: Int
+    name: String
+    region_id: Region
+  }
+
+  type Speciality {
+    id: Int
+    name: String
+  }
+  type Region {
+    id: Int
+    name: String
+  }
+
+  type Doctor {
+    id: Int!
     lastName: String!
     firstName: String!
     adresse: String!
     numberPhone: String!
-    speciality: String!
+    speciality: Speciality
+    ville: City
+    email: String
   }
 
   type Profile {
     id: ID!
-    username: String!
+    email: String!
     cabinet: Cabinet!
   }
 
@@ -51,10 +68,16 @@ const schema = gql`
     user: User!
   }
 
+  type PaginationDoctors {
+    doctors: [Doctor]
+    nbrPages: Int!
+    page: Int!
+  }
+
   type Mutation {
-    createUser(password: String!, username: String!, role: String!): User!
-    createUserClient(password: String!, username: String!, role: String!, cabinetId: String!): Profile!
-    createUserSession(password: String!, username: String!): UserSession!
+    createUser(password: String!, email: String!, role: String!): User!
+    createUserClient(password: String!, email: String!, role: String!, cabinetId: String!): Profile!
+    createUserSession(password: String!, email: String!): UserSession!
     deleteUserSession(me: Boolean!): Boolean!
     
     createCabinet(name: String!, address: String!, phone: String!): Cabinet!
@@ -78,7 +101,7 @@ const schema = gql`
     userSession(me: Boolean!): UserSession
     allCabinet: [Cabinet]
     getCabinetById(cabinetId: String!): Cabinet
-    getDoctors: [DoctorDb]
+    getDoctors: PaginationDoctors!
     getAllPatients: [Patient]
     getPatientById(patientId: String!): Patient!
   }

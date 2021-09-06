@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Tanger-Tétouan- Al Hoceima"
+  },
+  {
+    "id": 2,
+    "name": "Fès-Meknès"
+  },
+  {
+    "id": 3,
+    "name": "Rabat-Salé-Kénitra"
+  },
+  {
+    "id": 4,
+    "name": "Béni Mellal-Khénifra"
+  },
+  {
+    "id": 5,
+    "name": "Casablanca-Settat"
+  },
+  {
+    "id": 6,
+    "name": "Marrakech-Safi"
+  },
+  {
+    "id": 7,
+    "name": "Drâa‐Tafilalet"
+  },
+  {
+    "id": 8,
+    "name": "Sous-Massa"
+  },
+  {
+    "id": 9,
+    "name": "Guelmim-Oued Noun"
+  },
+  {
+    "id": 10,
+    "name": "Laâyoune‐Saguia al Hamra"
+  },
+  {
+    "id": 11,
+    "name": "Ed Dakhla‐Oued ed Dahab"
+  },
+  {
+    "id": 12,
+    "name": "Oriental"
+  }
+]

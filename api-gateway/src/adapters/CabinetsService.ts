@@ -19,8 +19,8 @@ export default class CabinetsService {
     const body = await got.get(`${CABINETS_SERVICE_URI}/patients`).json();
     return <Patient[]>body;
   }
-  static async createProfile({ username, cabinetId }: { cabinetId: string; username: string; }) {
-    const body = await got.post(`${CABINETS_SERVICE_URI}/profile`, { json: { cabinetId, username} }).json();
+  static async createProfile({ email, cabinetId }: { cabinetId: string; email: string; }) {
+    const body = await got.post(`${CABINETS_SERVICE_URI}/profile`, { json: { cabinetId, email} }).json();
     return <Profile>body;
   }
   static async allCabinet(): Promise<Cabinet[] | null> {

@@ -1,0 +1,75 @@
+id,name,region_id
+1,Tanger‐Asilah,1
+2,M'Diq‐Fnidq,1
+3,Chefchaouen,1
+4,Fahs‐Anjra,1
+5,Larache,1
+6,Tétouan,1
+7,Ouezzane,1
+8,Al Hoceima,1
+9,Meknès,2
+10,Fès,2
+11,Boulemane,2
+12,El Hajeb,2
+13,Ifrane,2
+14,Sefrou,2
+15,Taounate,2
+16,Taza,2
+17,Moulay Yacoub,2
+18,Rabat,3
+19,Salé,3
+20,Skhirate‐Temara,3
+21,Kénitra,3
+22,Khemisset,3
+23,Sidi Kacem,3
+24,Sidi Slimane,3
+25,Azilal,4
+26,Béni Mellal,4
+27,Khénifra,4
+28,Khouribga,4
+29,Fquih Ben Salah,4
+30,Casablanca,5
+31,Mohammedia,5
+32,Ben Slimane,5
+33,El Jadida,5
+34,Mediouna,5
+35,Nouacer,5
+36,Berrechid,5
+37,Sidi Bennour,5
+38,Marrakech,6
+39,Al Haouz,6
+40,Chichaoua,6
+41,El Kelaa Sraghna,6
+42,Essaouira,6
+43,Safi,6
+44,Rehamna,6
+45,Youssoufia,6
+46,Errachidia,7
+47,Ouarzazate,7
+48,Zagora,7
+49,Tinghir,7
+50,Midelt,7
+51,Agadir Ida Ou Tanane,8
+52,Inezgane Ait Melloul,8
+53,Chtouka Ait Baha,8
+54,Taroudant,8
+55,Tata,8
+56,Tiznit,8
+57,Guelmim,9
+58,Tan‐Tan,9
+59,Sidi Ifni,9
+60,Assa‐Zag,9
+61,Es Semara,10
+62,Boujdour,10
+63,Laâyoune,10
+64,Tarfaya,10
+65,Aousserd,11
+66,Oued Eddahab,11
+67,Oujda Angad,12
+68,Berkane,12
+69,Jrada,12
+70,Nador,12
+71,Taourirt,12
+72,Driouch,12
+73,Guercif,12
+74,Figuig,12

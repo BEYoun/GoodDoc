@@ -13,7 +13,7 @@ const deleteUserSessionResolver = async (obj: any, args: Args, context: Resolver
   await UsersService.deleteUserSession({ sessionId });
 
   context.res.clearCookie("userSessionId", {
-    // domain: ".goodoc.co", httpOnly: true, sameSite: "lax", secure: true,
+    domain: ".goodoc.co", httpOnly: true, sameSite: "lax", secure: true,
   });
 
   return true;

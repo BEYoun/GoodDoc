@@ -2,7 +2,7 @@ import { createDatabase } from "../common";
 import data from './specialities.json'
 
 export interface Speciality {
-    id: string;
+    id: number;
     name: string;
 }
 

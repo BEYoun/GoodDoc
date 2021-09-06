@@ -1,0 +1,372 @@
+[
+  {
+    "id": 1,
+    "name": "Tanger‐Asilah",
+    "region_id": 1
+  },
+  {
+    "id": 2,
+    "name": "M'Diq‐Fnidq",
+    "region_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Chefchaouen",
+    "region_id": 1
+  },
+  {
+    "id": 4,
+    "name": "Fahs‐Anjra",
+    "region_id": 1
+  },
+  {
+    "id": 5,
+    "name": "Larache",
+    "region_id": 1
+  },
+  {
+    "id": 6,
+    "name": "Tétouan",
+    "region_id": 1
+  },
+  {
+    "id": 7,
+    "name": "Ouezzane",
+    "region_id": 1
+  },
+  {
+    "id": 8,
+    "name": "Al Hoceima",
+    "region_id": 1
+  },
+  {
+    "id": 9,
+    "name": "Meknès",
+    "region_id": 2
+  },
+  {
+    "id": 10,
+    "name": "Fès",
+    "region_id": 2
+  },
+  {
+    "id": 11,
+    "name": "Boulemane",
+    "region_id": 2
+  },
+  {
+    "id": 12,
+    "name": "El Hajeb",
+    "region_id": 2
+  },
+  {
+    "id": 13,
+    "name": "Ifrane",
+    "region_id": 2
+  },
+  {
+    "id": 14,
+    "name": "Sefrou",
+    "region_id": 2
+  },
+  {
+    "id": 15,
+    "name": "Taounate",
+    "region_id": 2
+  },
+  {
+    "id": 16,
+    "name": "Taza",
+    "region_id": 2
+  },
+  {
+    "id": 17,
+    "name": "Moulay Yacoub",
+    "region_id": 2
+  },
+  {
+    "id": 18,
+    "name": "Rabat",
+    "region_id": 3
+  },
+  {
+    "id": 19,
+    "name": "Salé",
+    "region_id": 3
+  },
+  {
+    "id": 20,
+    "name": "Skhirate‐Temara",
+    "region_id": 3
+  },
+  {
+    "id": 21,
+    "name": "Kénitra",
+    "region_id": 3
+  },
+  {
+    "id": 22,
+    "name": "Khemisset",
+    "region_id": 3
+  },
+  {
+    "id": 23,
+    "name": "Sidi Kacem",
+    "region_id": 3
+  },
+  {
+    "id": 24,
+    "name": "Sidi Slimane",
+    "region_id": 3
+  },
+  {
+    "id": 25,
+    "name": "Azilal",
+    "region_id": 4
+  },
+  {
+    "id": 26,
+    "name": "Béni Mellal",
+    "region_id": 4
+  },
+  {
+    "id": 27,
+    "name": "Khénifra",
+    "region_id": 4
+  },
+  {
+    "id": 28,
+    "name": "Khouribga",
+    "region_id": 4
+  },
+  {
+    "id": 29,
+    "name": "Fquih Ben Salah",
+    "region_id": 4
+  },
+  {
+    "id": 30,
+    "name": "Casablanca",
+    "region_id": 5
+  },
+  {
+    "id": 31,
+    "name": "Mohammedia",
+    "region_id": 5
+  },
+  {
+    "id": 32,
+    "name": "Ben Slimane",
+    "region_id": 5
+  },
+  {
+    "id": 33,
+    "name": "El Jadida",
+    "region_id": 5
+  },
+  {
+    "id": 34,
+    "name": "Mediouna",
+    "region_id": 5
+  },
+  {
+    "id": 35,
+    "name": "Nouacer",
+    "region_id": 5
+  },
+  {
+    "id": 36,
+    "name": "Berrechid",
+    "region_id": 5
+  },
+  {
+    "id": 37,
+    "name": "Sidi Bennour",
+    "region_id": 5
+  },
+  {
+    "id": 38,
+    "name": "Marrakech",
+    "region_id": 6
+  },
+  {
+    "id": 39,
+    "name": "Al Haouz",
+    "region_id": 6
+  },
+  {
+    "id": 40,
+    "name": "Chichaoua",
+    "region_id": 6
+  },
+  {
+    "id": 41,
+    "name": "El Kelaa Sraghna",
+    "region_id": 6
+  },
+  {
+    "id": 42,
+    "name": "Essaouira",
+    "region_id": 6
+  },
+  {
+    "id": 43,
+    "name": "Safi",
+    "region_id": 6
+  },
+  {
+    "id": 44,
+    "name": "Rehamna",
+    "region_id": 6
+  },
+  {
+    "id": 45,
+    "name": "Youssoufia",
+    "region_id": 6
+  },
+  {
+    "id": 46,
+    "name": "Errachidia",
+    "region_id": 7
+  },
+  {
+    "id": 47,
+    "name": "Ouarzazate",
+    "region_id": 7
+  },
+  {
+    "id": 48,
+    "name": "Zagora",
+    "region_id": 7
+  },
+  {
+    "id": 49,
+    "name": "Tinghir",
+    "region_id": 7
+  },
+  {
+    "id": 50,
+    "name": "Midelt",
+    "region_id": 7
+  },
+  {
+    "id": 51,
+    "name": "Agadir Ida Ou Tanane",
+    "region_id": 8
+  },
+  {
+    "id": 52,
+    "name": "Inezgane Ait Melloul",
+    "region_id": 8
+  },
+  {
+    "id": 53,
+    "name": "Chtouka Ait Baha",
+    "region_id": 8
+  },
+  {
+    "id": 54,
+    "name": "Taroudant",
+    "region_id": 8
+  },
+  {
+    "id": 55,
+    "name": "Tata",
+    "region_id": 8
+  },
+  {
+    "id": 56,
+    "name": "Tiznit",
+    "region_id": 8
+  },
+  {
+    "id": 57,
+    "name": "Guelmim",
+    "region_id": 9
+  },
+  {
+    "id": 58,
+    "name": "Tan‐Tan",
+    "region_id": 9
+  },
+  {
+    "id": 59,
+    "name": "Sidi Ifni",
+    "region_id": 9
+  },
+  {
+    "id": 60,
+    "name": "Assa‐Zag",
+    "region_id": 9
+  },
+  {
+    "id": 61,
+    "name": "Es Semara",
+    "region_id": 10
+  },
+  {
+    "id": 62,
+    "name": "Boujdour",
+    "region_id": 10
+  },
+  {
+    "id": 63,
+    "name": "Laâyoune",
+    "region_id": 10
+  },
+  {
+    "id": 64,
+    "name": "Tarfaya",
+    "region_id": 10
+  },
+  {
+    "id": 65,
+    "name": "Aousserd",
+    "region_id": 11
+  },
+  {
+    "id": 66,
+    "name": "Oued Eddahab",
+    "region_id": 11
+  },
+  {
+    "id": 67,
+    "name": "Oujda Angad",
+    "region_id": 12
+  },
+  {
+    "id": 68,
+    "name": "Berkane",
+    "region_id": 12
+  },
+  {
+    "id": 69,
+    "name": "Jrada",
+    "region_id": 12
+  },
+  {
+    "id": 70,
+    "name": "Nador",
+    "region_id": 12
+  },
+  {
+    "id": 71,
+    "name": "Taourirt",
+    "region_id": 12
+  },
+  {
+    "id": 72,
+    "name": "Driouch",
+    "region_id": 12
+  },
+  {
+    "id": 73,
+    "name": "Guercif",
+    "region_id": 12
+  },
+  {
+    "id": 74,
+    "name": "Figuig",
+    "region_id": 12
+  }
+]

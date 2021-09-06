@@ -1,150 +1,150 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "name": "Addictologie"
   },
   {
-    "id": "2",
+    "id": 2,
     "name": "Algologie"
   },
   {
-    "id": "3",
+    "id": 3,
     "name": "Allergologie"
   },
   {
-    "id": "4",
+    "id": 4,
     "name": "Anesthésie-Réanimation"
   },
   {
-    "id": "5",
+    "id": 5,
     "name": "Cancérologie"
   },
   {
-    "id": "6",
+    "id": 6,
     "name": "Cardio-vasculaire HTA"
   },
   {
-    "id": "7",
+    "id": 7,
     "name": "Chirurgie"
   },
   {
-    "id": "8",
+    "id": 8,
     "name": "Dermatologie"
   },
   {
-    "id": "9",
+    "id": 9,
     "name": "Diabétologie-Endocrinologie"
   },
   {
-    "id": "10",
+    "id": 10,
     "name": "Génétique"
   },
   {
-    "id": "11",
+    "id": 11,
     "name": "Gériatrie"
   },
   {
-    "id": "12",
+    "id": 12,
     "name": "Gynécologie-Obstétrique"
   },
   {
-    "id": "13",
+    "id": 13,
     "name": "Hématologie"
   },
   {
-    "id": "14",
+    "id": 14,
     "name": "Hépato"
   },
   {
-    "id": "15",
+    "id": 15,
     "name": "gastro-entérologie"
   },
   {
-    "id": "16",
+    "id": 16,
     "name": "Imagerie médicale"
   },
   {
-    "id": "17",
+    "id": 17,
     "name": "Immunologie"
   },
   {
-    "id": "18",
+    "id": 18,
     "name": "Infectiologie"
   },
   {
-    "id": "19",
+    "id": 19,
     "name": "Médecine du sport"
   },
   {
-    "id": "20",
+    "id": 20,
     "name": "Médecine du travail"
   },
   {
-    "id": "21",
+    "id": 21,
     "name": "Médecine générale"
   },
   {
-    "id": "22",
+    "id": 22,
     "name": "Médecine légale"
   },
   {
-    "id": "23",
+    "id": 23,
     "name": "Médecine physique et de réadaptation"
   },
   {
-    "id": "24",
+    "id": 24,
     "name": "Néphrologie"
   },
   {
-    "id": "25",
+    "id": 25,
     "name": "Neurologie"
   },
   {
-    "id": "26",
+    "id": 26,
     "name": "Nutrition"
   },
   {
-    "id": "27",
+    "id": 27,
     "name": "Ophtalmologie"
   },
   {
-    "id": "28",
+    "id": 28,
     "name": "ORL"
   },
   {
-    "id": "29",
+    "id": 29,
     "name": "Pédiatrie"
   },
   {
-    "id": "30",
+    "id": 30,
     "name": "Pneumologie"
   },
   {
-    "id": "31",
+    "id": 31,
     "name": "Psychiatrie"
   },
   {
-    "id": "32",
+    "id": 32,
     "name": "Rhumatologie"
   },
   {
-    "id": "33",
+    "id": 33,
     "name": "Sexologie"
   },
   {
-    "id": "34",
+    "id": 34,
     "name": "Toxicologie"
   },
   {
-    "id": "35",
+    "id": 35,
     "name": "Urologie"
   },
   {
-    "id": "36",
+    "id": 36,
     "name": "Psycholigue"
   },
   {
-    "id": "37",
+    "id": 37,
     "name": "Dentiste"
   }
 ]

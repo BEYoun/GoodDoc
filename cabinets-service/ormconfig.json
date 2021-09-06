@@ -2,9 +2,13 @@
   "cli": {
     "migrationsDir": "src/db/migrations"
   },
-  "entities": ["src/db/entities/*.ts"],
+  "entities": [
+    "src/db/entities/*.ts"
+  ],
   "logging": false,
-  "migrations": ["src/db/migrations/*.ts"],
+  "migrations": [
+    "src/db/migrations/*.ts"
+  ],
   "synchronize": true,
   "type": "mysql",
   "url": "mysql://root:password@cabinets-service-db/db"

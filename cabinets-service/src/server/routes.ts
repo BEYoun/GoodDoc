@@ -119,7 +119,12 @@ const setupRoutes = (app: Express) => {
   });
   app.get('/inMemoryDoctors', async (req, res, next) => {
     const doctors = dotorsInMemoRepo.getAll();
-    return res.json(doctors);
+    const response = {
+      doctors: doctors.slice(0,9),
+      nbrPages: 10,
+      page: 1
+    }
+    return res.json(response);
   })
 };
 

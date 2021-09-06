@@ -6,7 +6,7 @@ const USERS_SERVICE_URI = accessEnv("USERS_SERVICE_URI");
 export interface User {
   createdAt: string;
   id: string;
-  username: string;
+  email: string;
 }
 
 export interface UserSession {
@@ -17,13 +17,13 @@ export interface UserSession {
 }
 
 export default class UsersService {
-  static async createUser({ password, username, role }: { password: string; username: string; role: string }): Promise<User> {
-    const body = await got.post(`${USERS_SERVICE_URI}/users`, { json: { password, username, role } }).json();
+  static async createUser({ password, email, role }: { password: string; email: string; role: string }): Promise<User> {
+    const body = await got.post(`${USERS_SERVICE_URI}/users`, { json: { password, email, role } }).json();
     return <User>body;
   }
 
-  static async createUserSession({ password, username }: { password: string; username: string }) {
-    const body = <UserSession>await got.post(`${USERS_SERVICE_URI}/sessions`, { json: { password, username } }).json();
+  static async createUserSession({ password, email }: { password: string; email: string }) {
+    const body = <UserSession>await got.post(`${USERS_SERVICE_URI}/sessions`, { json: { password, email } }).json();
     return body;
   }
 

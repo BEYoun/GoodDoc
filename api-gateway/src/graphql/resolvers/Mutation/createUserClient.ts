@@ -3,14 +3,14 @@ import CabinetsService from "#root/adapters/CabinetsService";
 
 interface Args {
   password: string;
-  username: string;
+  email: string;
   role: string;
   cabinetId: string;
 }
 
-const createUserClient = async (obj: any, { password, username, role, cabinetId }: Args) => {
-  const user = await UsersService.createUser({ password, username, role });
-  const profile = await CabinetsService.createProfile({ username: user.username, cabinetId });
+const createUserClient = async (obj: any, { password, email, role, cabinetId }: Args) => {
+  const user = await UsersService.createUser({ password, email, role });
+  const profile = await CabinetsService.createProfile({ email: user.email, cabinetId });
   return profile;
 };
 

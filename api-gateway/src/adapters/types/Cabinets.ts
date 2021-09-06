@@ -34,11 +34,28 @@ export interface Profile {
     id: string;
 }
 
+export interface City {
+    id: number;
+    name: string;
+    region_id: Region;
+}
+
+export interface Speciality {
+    id: number;
+    name: string;
+}
+export interface Region {
+    id: number;
+    name: string;
+}
+
 export interface Doctors {
-    id: string;
+    id: number;
     lastName: string;
     firstName: string;
     adresse: string;
     numberPhone: string;
-    speciality: string;
+    speciality: Speciality;
+    ville: City;
+    email: string;
 }
